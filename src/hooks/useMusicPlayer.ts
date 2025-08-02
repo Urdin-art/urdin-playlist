@@ -1,0 +1,216 @@
+import { useState, useEffect } from 'react';
+import { Song } from '@/types';
+
+
+export const useMusicPlayer = () => {
+  const [allSongs, setAllSongs] = useState<Song[]>([]);
+  const [activeSongs, setActiveSongs] = useState<Song[]>([]);
+  const [excludedSongs, setExcludedSongs] = useState<Song[]>([]);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Cargar canciones desde songs.json
+  useEffect(() => {
+    const loadSongs = async () => {
+      try {
+        const response = await fetch('/songs.json');
+        if (!response.ok) {
+          throw new Error('Error al cargar canciones: ' + response.status);
+        }
+        const songsData: Omit<Song, 'isNew'>[] = await response.json();
+        
+        // Obtener datos de localStorage
+        const activePlaylistOrder = JSON.parse(localStorage.getItem('activePlaylistOrder') || '[]');
+        const excludedPlaylistOrder = JSON.parse(localStorage.getItem('excludedPlaylistOrder') || '[]');
+        const playedSongs = JSON.parse(localStorage.getItem('playedSongs') || '[]');
+
+        // Procesar canciones
+        const processedSongs: Song[] = songsData.map(song => ({
+          ...song,
+          isNew: !playedSongs.includes(song.id)
+        }));
+
+        setAllSongs(processedSongs);
+
+        // Separar en activas y excluidas
+        const activeSongsArray: Song[] = [];
+        const excludedSongsArray: Song[] = [];
+
+        processedSongs.forEach(song => {
+          if (excludedPlaylistOrder.includes(song.id)) {
+            excludedSongsArray.push(song);
+          } else {
+            activeSongsArray.push(song);
+          }
+        });
+
+        // Ordenar lista activa (nuevas primero, luego por orden guardado)
+        activeSongsArray.sort((a, b) => {
+          // Primero por novedad
+          if (a.isNew && !b.isNew) return -1;
+          if (!a.isNew && b.isNew) return 1;
+          
+          // Luego por orden guardado
+          const aIndex = activePlaylistOrder.indexOf(a.id);
+          const bIndex = activePlaylistOrder.indexOf(b.id);
+          
+          if (aIndex === -1 && bIndex === -1) return 0;
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          
+          return aIndex - bIndex;
+        });
+
+        // Ordenar lista excluida por orden guardado
+        excludedSongsArray.sort((a, b) => {
+          const aIndex = excludedPlaylistOrder.indexOf(a.id);
+          const bIndex = excludedPlaylistOrder.indexOf(b.id);
+          
+          if (aIndex === -1 && bIndex === -1) return 0;
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          
+          return aIndex - bIndex;
+        });
+
+        setActiveSongs(activeSongsArray);
+        setExcludedSongs(excludedSongsArray);
+        
+      } catch (error) {
+        console.error('Error loading songs:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadSongs();
+  }, []);
+
+  // Guardar orden en localStorage cuando cambien las listas
+  useEffect(() => {
+    if (activeSongs.length > 0) {
+      const activeOrder = activeSongs.map(song => song.id);
+      localStorage.setItem('activePlaylistOrder', JSON.stringify(activeOrder));
+    }
+  }, [activeSongs]);
+
+  useEffect(() => {
+    if (excludedSongs.length > 0) {
+      const excludedOrder = excludedSongs.map(song => song.id);
+      localStorage.setItem('excludedPlaylistOrder', JSON.stringify(excludedOrder));
+    }
+  }, [excludedSongs]);
+
+  // Marcar canción como reproducida
+  const markSongAsPlayed = (songId: string) => {
+    const playedSongs = JSON.parse(localStorage.getItem('playedSongs') || '[]');
+    if (!playedSongs.includes(songId)) {
+      playedSongs.push(songId);
+      localStorage.setItem('playedSongs', JSON.stringify(playedSongs));
+      
+      // Actualizar el estado isNew de la canción
+      setActiveSongs(prev => 
+        prev.map(song => 
+          song.id === songId ? { ...song, isNew: false } : song
+        )
+      );
+    }
+  };
+
+  // Mover canción entre listas
+  const toggleSongPlaylist = (songId: string) => {
+    const song = allSongs.find(s => s.id === songId);
+    if (!song) return;
+
+    const isCurrentlyActive = activeSongs.some(s => s.id === songId);
+    
+    if (isCurrentlyActive) {
+      // Mover a excluidas
+      setActiveSongs(prev => prev.filter(s => s.id !== songId));
+      setExcludedSongs(prev => [...prev, song]);
+      
+      // Si era la canción actual, cambiar a la siguiente
+      if (activeSongs[currentSongIndex]?.id === songId) {
+        const newIndex = Math.min(currentSongIndex, activeSongs.length - 2);
+        setCurrentSongIndex(Math.max(0, newIndex));
+      }
+    } else {
+      // Mover a activas (al final)
+      setExcludedSongs(prev => prev.filter(s => s.id !== songId));
+      setActiveSongs(prev => [...prev, song]);
+    }
+  };
+
+  // Mover canción hacia arriba en la lista activa
+  const moveSongUp = (songId: string) => {
+    setActiveSongs(prev => {
+      const index = prev.findIndex(s => s.id === songId);
+      if (index <= 0) return prev;
+      
+      const newArray = [...prev];
+      [newArray[index - 1], newArray[index]] = [newArray[index], newArray[index - 1]];
+      
+      // Actualizar índice actual si es necesario
+      if (currentSongIndex === index) {
+        setCurrentSongIndex(index - 1);
+      } else if (currentSongIndex === index - 1) {
+        setCurrentSongIndex(index);
+      }
+      
+      return newArray;
+    });
+  };
+
+  // Mover canción hacia abajo en la lista activa
+  const moveSongDown = (songId: string) => {
+    setActiveSongs(prev => {
+      const index = prev.findIndex(s => s.id === songId);
+      if (index >= prev.length - 1) return prev;
+      
+      const newArray = [...prev];
+      [newArray[index], newArray[index + 1]] = [newArray[index + 1], newArray[index]];
+      
+      // Actualizar índice actual si es necesario
+      if (currentSongIndex === index) {
+        setCurrentSongIndex(index + 1);
+      } else if (currentSongIndex === index + 1) {
+        setCurrentSongIndex(index);
+      }
+      
+      return newArray;
+    });
+  };
+
+  const downloadSong = (songId: string) => {
+    const song = activeSongs.find(s => s.id === songId);
+    if (song) {
+      // Crear enlace de descarga
+      const link = document.createElement('a');
+      link.href = song.audioFile;
+      link.download = `${song.artist} - ${song.title}.mp3`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  return {
+    activeSongs,
+    excludedSongs,
+    currentSongIndex,
+    currentSong: activeSongs[currentSongIndex],
+    currentTime,
+    isPlaying,
+    isLoading,
+    setCurrentSongIndex,
+    setCurrentTime,
+    setIsPlaying,
+    markSongAsPlayed,
+    toggleSongPlaylist,
+    moveSongUp,
+    moveSongDown,
+    downloadSong,
+  };
+};

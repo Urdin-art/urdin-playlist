@@ -1,0 +1,82 @@
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { useToast } from '@/components/ui/use-toast';
+
+const AdminPanel = () => {
+  const [isMigrating, setIsMigrating] = useState(false);
+  const [migrationResult, setMigrationResult] = useState<any>(null);
+  const { toast } = useToast();
+
+  const handleMigration = async () => {
+    setIsMigrating(true);
+    try {
+      const response = await fetch('/api/migrate_songs.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-DEV-TOKEN': 'DEV_SECRET'
+        }
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setMigrationResult(result);
+        toast({
+          title: "Migración exitosa",
+          description: `Se importaron ${result.count} canciones`,
+        });
+      } else {
+        toast({
+          title: "Error en la migración",
+          description: result.error,
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "No se pudo completar la migración",
+        variant: "destructive"
+      });
+    } finally {
+      setIsMigrating(false);
+    }
+  };
+
+  return (
+    <Card className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Panel de Administración</h1>
+      
+      <div className="space-y-4">
+        <Button 
+          onClick={handleMigration}
+          disabled={isMigrating}
+        >
+          {isMigrating ? "Migrando..." : "Migrar Canciones"}
+        </Button>
+
+        {migrationResult && (
+          <div className="mt-6 space-y-2">
+            <h2 className="font-semibold">Resultado:</h2>
+            <p>{migrationResult.message}</p>
+            
+            <div className="mt-4">
+              <h3 className="font-medium">Ejemplo de canciones migradas:</h3>
+              <ul className="list-disc pl-5 mt-2">
+                {migrationResult.songs.map((song: any, index: number) => (
+                  <li key={index}>
+                    {song.title} - {song.artist} ({song.duration})
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </Card>
+  );
+};
+
+export default AdminPanel;

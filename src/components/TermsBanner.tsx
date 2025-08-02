@@ -3,24 +3,41 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useNavigate } from 'react-router-dom';
 
-export const TermsBanner = () => {
-  const [open, setOpen] = useState(false);
+interface TermsBannerProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const TermsBanner = ({ isOpen, onClose }: TermsBannerProps) => {
+  const [internalOpen, setInternalOpen] = useState(isOpen);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setInternalOpen(isOpen);
+  }, [isOpen]);
+
+  useEffect(() => {
     const accepted = localStorage.getItem('termsAccepted');
-    if (!accepted) {
-      setOpen(true);
+    if (!accepted && !isOpen) { // Only open automatically if not already forced open by prop
+      setInternalOpen(true);
     }
-  }, []);
+  }, [isOpen]);
 
   const handleAccept = () => {
     localStorage.setItem('termsAccepted', 'true');
-    setOpen(false);
+    setInternalOpen(false);
+    onClose();
+  };
+
+  const handleOpenChange = (openState: boolean) => {
+    setInternalOpen(openState);
+    if (!openState) {
+      onClose();
+    }
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={internalOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>Términos y Condiciones</DialogTitle>
@@ -33,7 +50,10 @@ export const TermsBanner = () => {
             </Button>
             <Button 
               variant="outline" 
-              onClick={() => navigate('/terms')} 
+              onClick={() => {
+                navigate('/terms');
+                onClose(); // Close the modal when navigating to terms page
+              }} 
               className="flex-1"
             >
               Ver términos

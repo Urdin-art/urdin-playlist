@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMusicPlayer } from '@/hooks/useMusicPlayer';
 import { MusicPlayer } from '@/components/MusicPlayer';
 import { AlbumArt } from '@/components/AlbumArt';
@@ -8,6 +8,8 @@ import { Card } from '@/components/ui/card';
 import { TermsBanner } from '@/components/TermsBanner';
 
 const Index = () => {
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+
   const {
     activeSongs,
     excludedSongs,
@@ -43,7 +45,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen p-4 space-y-6">
-      <TermsBanner />
+      <TermsBanner isOpen={isTermsModalOpen} onClose={() => setIsTermsModalOpen(false)} />
       {/* Header */}
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-4">
@@ -118,6 +120,18 @@ const Index = () => {
       {/* Footer */}
       <div className="text-center text-muted-foreground text-sm">
         <p>🎵 _UrDiN.art_ Music Player • Hecho con Inteligencia Natural, y un poco de la Artificial 🎵</p>
+        <p className="mt-2">
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              setIsTermsModalOpen(true);
+            }} 
+            className="text-neon-cyan hover:underline"
+          >
+            Ver Términos y Condiciones
+          </a>
+        </p>
       </div>
     </div>
   );

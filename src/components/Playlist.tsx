@@ -51,7 +51,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
         {title}
       </h2>
       
-      <div className="space-y-2 max-h-80 overflow-y-auto">
+      <div className="space-y-2">
         {songs.length === 0 ? (
           <div className="text-center text-muted-foreground py-8">
             <div className="text-3xl mb-2">🎵</div>

@@ -66,56 +66,62 @@ const Index = () => {
         {/* Album Art */}
         <div className="lg:col-span-1 flex">
           <div className="w-full">
-            <AlbumArt song={currentSong} />
+            {currentSong && <AlbumArt song={currentSong} />}
           </div>
         </div>
 
         {/* Player Controls */}
         <div className="lg:col-span-2 flex">
           <div className="w-full">
-            <MusicPlayer
-              songs={activeSongs}
-              currentSongIndex={currentSongIndex}
-              onSongChange={setCurrentSongIndex}
-              onSongEnd={markSongAsPlayed}
-              onTimeUpdate={setCurrentTime}
-              onPlayStateChange={setIsPlaying}
-            />
+            {activeSongs.length > 0 && (
+              <MusicPlayer
+                songs={activeSongs}
+                currentSongIndex={currentSongIndex}
+                onSongChange={setCurrentSongIndex}
+                onSongEnd={markSongAsPlayed}
+                onTimeUpdate={setCurrentTime}
+                onPlayStateChange={setIsPlaying}
+              />
+            )}
           </div>
         </div>
       </div>
 
       {/* Lyrics Display */}
-      <LyricsDisplay
-        lyricsFile={currentSong?.lyricsFile}
-        currentTime={currentTime}
-        isPlaying={isPlaying}
-      />
+      {currentSong && (
+        <LyricsDisplay
+          lyricsFile={currentSong?.lyricsFile}
+          currentTime={currentTime}
+          isPlaying={isPlaying}
+        />
+      )}
 
       {/* Playlists Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Active Playlist */}
-        <Playlist
-          title="Lista de reproducción"
-          songs={activeSongs}
-          isActive={true}
-          currentSongId={currentSong?.id}
-          onSongSelect={setCurrentSongIndex}
-          onSongToggle={toggleSongPlaylist}
-          onMoveUp={moveSongUp}
-          onMoveDown={moveSongDown}
-          onDownload={downloadSong}
-        />
+      {!isLoading && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Active Playlist */}
+          <Playlist
+            title="Lista de reproducción"
+            songs={activeSongs}
+            isActive={true}
+            currentSongId={currentSong?.id}
+            onSongSelect={setCurrentSongIndex}
+            onSongToggle={toggleSongPlaylist}
+            onMoveUp={moveSongUp}
+            onMoveDown={moveSongDown}
+            onDownload={downloadSong}
+          />
 
-        {/* Excluded Songs */}
-        <Playlist
-          title="Exclusiones"
-          songs={excludedSongs}
-          isActive={false}
-          onSongSelect={() => {}} // No action for excluded songs
-          onSongToggle={toggleSongPlaylist}
-        />
-      </div>
+          {/* Excluded Songs */}
+          <Playlist
+            title="Exclusiones"
+            songs={excludedSongs}
+            isActive={false}
+            onSongSelect={() => {}} // No action for excluded songs
+            onSongToggle={toggleSongPlaylist}
+          />
+        </div>
+      )}
 
       {/* Footer */}
       <div className="text-center text-muted-foreground text-sm">

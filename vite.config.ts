@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? "/urdin-playlist/" : "/", // Base path for GitHub Pages
+  base: "/", // Base path - serve from root for all environments
   server: {
     host: "::",
     port: 8080,

@@ -239,7 +239,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   if (!currentSong) return null;
 
   return (
-    <Card className="glass-effect neon-border p-6">
+    <Card className="glass-effect neon-border p-6 h-full flex flex-col">
       <audio
         ref={audioRef}
         src={currentSong.audioFile}

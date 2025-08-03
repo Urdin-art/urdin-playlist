@@ -18,6 +18,7 @@ const Index = () => {
   // Handle beforeinstallprompt event
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
+      console.log('beforeinstallprompt event fired');
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
       // Stash the event so it can be triggered later.
@@ -34,6 +35,7 @@ const Index = () => {
     };
 
     const handleAppInstalled = () => {
+      console.log('appinstalled event fired');
       // Hide the install banner and icon
       setShowInstallBanner(false);
       setIsAppInstalled(true);
@@ -45,7 +47,9 @@ const Index = () => {
     window.addEventListener('appinstalled', handleAppInstalled);
 
     // Check if the app is already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    console.log('Is app installed (standalone mode):', isStandalone);
+    if (isStandalone) {
       setIsAppInstalled(true);
     }
 
@@ -233,6 +237,12 @@ const Index = () => {
             Ver Términos y Condiciones
           </a>
         </p>
+        {/* PWA Installation Note */}
+        {isAppInstalled === false && showInstallBanner === false && (
+          <p className="mt-2 text-xs text-muted-foreground">
+            Si has instalado y desinstalado la aplicación previamente, es posible que el navegador no muestre la opción de instalación durante un tiempo. Puedes intentar instalarla manualmente desde el menú del navegador.
+          </p>
+        )}
       </div>
     </div>
   );

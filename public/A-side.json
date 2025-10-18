@@ -1,0 +1,17 @@
+{
+    "logo": "\/logo.png",
+    "tagline": "Escuchando: {CURRENT_SONG_TITLE} - Cara A",
+    "tagline_html": "<a href='https:\/\/www.urdin.art' target='_blank' rel='noopener noreferrer' style='color: hsl(var(--accent));'>Visita mi web<\/a>",
+
+    "playlist": "\/songs-a.json",
+    "storage": "retro-beat-player-side-a",
+    "use_exclusions": true,
+    "personal_list_button": {
+        "enabled": true,
+        "targetConfig": "my-side"
+    },
+    "refresh_button": {
+        "enabled": false
+    },
+    "theme": "A"
+}

@@ -1,0 +1,15 @@
+{
+    "logo": "\/logo.png",
+    "tagline": "A\u00f1ade tus \ud83c\udfb5canciones\ud83c\udfb5 favoritas a tu lista activando su \u2b50",
+
+    "playlist": "localstorage:personal_playlist",
+    "storage": "retro-beat-player-my-side",
+    "use_exclusions": false,
+    "personal_list_button": {
+        "enabled": false
+    },
+    "refresh_button": {
+        "enabled": true
+    },
+    "theme": "my"
+}

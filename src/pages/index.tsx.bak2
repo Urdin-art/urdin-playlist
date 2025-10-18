@@ -1,0 +1,253 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useMusicPlayer } from '@/hooks/useMusicPlayer';
+import { useAppConfig } from '@/hooks/useAppConfig';
+import { MusicPlayer } from '@/components/MusicPlayer';
+import { AlbumArt } from '@/components/AlbumArt';
+import { LyricsDisplay } from '@/components/LyricsDisplay';
+import { Playlist } from '@/components/Playlist';
+import { Card } from '@/components/ui/card';
+import { TermsBanner } from '@/components/TermsBanner';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
+import { ContactForm } from '@/components/ContactForm';
+import { LogoLoader } from '@/components/LogoLoader';
+import GradientMenu from '@/components/ui/gradient-menu';
+
+const Index = () => {
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallBanner, setShowInstallBanner] = useState(false);
+  const [isAppInstalled, setIsAppInstalled] = useState(false);
+  const musicPlayerRef = useRef<{ togglePlay: () => void } | null>(null);
+  const { config, switchConfig } = useAppConfig();
+
+  // Función para manejar el play/pause desde el albumart
+  const handleAlbumArtPlayPause = () => {
+    if (musicPlayerRef.current) {
+      musicPlayerRef.current.togglePlay();
+    }
+  };
+
+  // Handle beforeinstallprompt event
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      const installBannerDismissed = localStorage.getItem('install_banner_dismissed') === 'true';
+      if (installBannerDismissed) return;
+
+      console.log('beforeinstallprompt event fired');
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallBanner(true);
+    };
+
+    const handleAppInstalled = () => {
+      console.log('appinstalled event fired');
+      // Hide the install banner and icon
+      setShowInstallBanner(false);
+      setIsAppInstalled(true);
+      // Clear the deferred prompt
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    // Check if the app is already installed
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    console.log('Is app installed (standalone mode):', isStandalone);
+    if (isStandalone) {
+      setIsAppInstalled(true);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  // Efecto para manejar la apertura de modales desde eventos globales
+  useEffect(() => {
+    const openTerms = () => setIsTermsModalOpen(true);
+    const openContact = () => setIsContactFormOpen(true);
+
+    window.addEventListener('open-terms-modal', openTerms);
+    window.addEventListener('open-contact-modal', openContact);
+
+    return () => {
+      window.removeEventListener('open-terms-modal', openTerms);
+      window.removeEventListener('open-contact-modal', openContact);
+    };
+  }, []);
+
+  const handleInstallClick = () => {
+    if (deferredPrompt) {
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        // Clear the deferred prompt
+        setDeferredPrompt(null);
+        // Hide the banner
+        setShowInstallBanner(false);
+      });
+    }
+  };
+
+  const {
+    activeSongs,
+    excludedSongs,
+    currentSongIndex,
+    currentSong,
+    currentTime,
+    isPlaying,
+    isLoading,
+    setCurrentSongIndex,
+    setCurrentTime,
+    setIsPlaying,
+    markSongAsPlayed,
+    toggleSongPlaylist,
+    moveSongUp,
+    moveSongDown,
+    moveSongToStart,
+    moveSongToEnd,
+    downloadSong,
+    personalPlaylist,
+    togglePersonalPlaylist,
+  } = useMusicPlayer();
+
+  useEffect(() => {
+    if (currentSong) {
+      // Actualizar el título del documento
+      document.title = `${currentSong.title} - UrDíN.art`;
+
+      // Actualizar metaetiquetas para redes sociales
+      const updateMetaTag = (property: string, content: string) => {
+        let element = document.querySelector(`meta[property='${property}']`) as HTMLMetaElement;
+        if (!element) {
+          element = document.createElement('meta');
+          element.setAttribute('property', property);
+          document.head.appendChild(element);
+        }
+        element.setAttribute('content', content);
+      };
+
+      const imageUrl = `${window.location.origin}${currentSong.albumArt}`;
+      updateMetaTag('og:title', currentSong.title);
+      updateMetaTag('og:description', `${currentSong.artist} - ${currentSong.album}`);
+      updateMetaTag('og:image', imageUrl);
+      updateMetaTag('twitter:title', currentSong.title);
+      updateMetaTag('twitter:description', `${currentSong.artist} - ${currentSong.album}`);
+      updateMetaTag('twitter:image', imageUrl);
+    }
+  }, [currentSong]);
+
+  // Función para procesar el tagline con variables dinámicas
+  const processTagline = (tagline: string): string => {
+    if (!tagline) return "";
+    let processed = tagline;
+    if (currentSong) {
+      processed = processed.replace(/\{CURRENT_SONG_TITLE\}/g, currentSong.title);
+    }
+    processed = processed.replace(/\{CURRENT_URL\}/g, window.location.href);
+    // Limpiar marcadores no reemplazados
+    processed = processed.replace(/\{[A-Z_]+\}/g, '');
+    return processed;
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Card className="glass-effect p-8 card-glow">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <h2 className="text-xl font-bold gradient-text-primary">Cargando <span className="italic text-secondary-custom">UrDíN.art</span> music player...</h2>
+            <p className="text-dimmed mt-2">Inicializando sistemas de audio</p>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen space-y-8 py-4 px-4 sm:px-8 lg:px-12">
+      <GradientMenu />
+
+      {config && config.tagline && (
+        <div className="text-center my-4">
+          <p className="text-lg italic">{processTagline(config.tagline)}</p>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-1">
+          <AlbumArt
+            currentSong={currentSong}
+            onPlayPause={handleAlbumArtPlayPause}
+          />
+        </div>
+        <div className="lg:col-span-2">
+          <MusicPlayer
+            ref={musicPlayerRef}
+            songs={activeSongs}
+            currentSongIndex={currentSongIndex}
+            onSongChange={setCurrentSongIndex}
+            onSongEnd={(songId) => markSongAsPlayed(songId)}
+            onTimeUpdate={setCurrentTime}
+            onPlayStateChange={setIsPlaying}
+            downloadSong={downloadSong}
+            personalPlaylist={personalPlaylist}
+            togglePersonalPlaylist={togglePersonalPlaylist}
+          />
+          <LyricsDisplay
+            song={currentSong}
+            currentTime={currentTime}
+            playerState={isPlaying ? 'playing' : 'paused'}
+          />
+        </div>
+      </div>
+
+      <Playlist
+        songs={activeSongs}
+        excludedSongs={excludedSongs}
+        currentSongIndex={currentSongIndex}
+        onSelectSong={setCurrentSongIndex}
+        onExcludeSong={toggleSongPlaylist}
+        onMoveSongUp={moveSongUp}
+        onMoveSongDown={moveSongDown}
+        onMoveSongToStart={moveSongToStart}
+        onMoveSongToEnd={moveSongToEnd}
+        onDownloadSong={downloadSong}
+        personalPlaylist={personalPlaylist}
+        onTogglePersonalPlaylist={togglePersonalPlaylist}
+      />
+
+      {showInstallBanner && !isAppInstalled && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <Card className="glass-effect p-4 card-glow flex items-center gap-4">
+            <p>Instala la aplicación para una mejor experiencia.</p>
+            <Button onClick={handleInstallClick} className="flex items-center gap-2">
+              <Download size={16} /> Instalar
+            </Button>
+          </Card>
+        </div>
+      )}
+
+      <TermsBanner
+        isOpen={isTermsModalOpen}
+        onClose={() => setIsTermsModalOpen(false)}
+      />
+      <ContactForm
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+      />
+    </div>
+  );
+};
+
+export default Index;

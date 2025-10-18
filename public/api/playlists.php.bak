@@ -1,0 +1,32 @@
+<?php
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+$method = $_SERVER['REQUEST_METHOD'];
+$public_path = '../public/';
+
+if ($method === 'GET') {
+    // Si se pide una playlist específica
+    if (isset($_GET['name'])) {
+        $playlist_path = $public_path . $_GET['name'];
+        if (file_exists($playlist_path)) {
+            echo file_get_contents($playlist_path);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Playlist not found.']);
+        }
+    } else {
+        // Si no, se devuelve la lista de todas las playlists
+        $files = glob($public_path . 'songs-*.json');
+        $playlists = [];
+        foreach ($files as $file) {
+            if (basename($file) !== 'songs-master.json') {
+                $playlists[] = basename($file);
+            }
+        }
+        echo json_encode($playlists);
+    }
+}
+
+// Aquí irá la lógica para actualizar las playlists (POST)
+?>

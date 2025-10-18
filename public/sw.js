@@ -1,8 +1,6 @@
-const CACHE_NAME = 'urdinart-player-v2';
+const CACHE_NAME = 'urdinart-player-v3';
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/manifest.json',
   '/logo.png',
   '/icon-192.png',
   '/icon-512.png',
@@ -11,7 +9,8 @@ const urlsToCache = [
 
 // URLs que NO deben ser cacheadas
 const noCacheUrls = [
-  '/songs.json'
+  '/songs.json',
+  '/theme-B-colors.css'
 ];
 
 self.addEventListener('install', event => {
@@ -34,7 +33,10 @@ self.addEventListener('fetch', event => {
       caches.open(CACHE_NAME).then(cache => {
         return cache.match(event.request).then(cachedResponse => {
           const fetchPromise = fetch(event.request).then(networkResponse => {
-            cache.put(event.request, networkResponse.clone());
+            // Solo cachear si es una respuesta completa (200)
+            if (networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
             return networkResponse;
           });
           return cachedResponse || fetchPromise;
@@ -59,7 +61,8 @@ self.addEventListener('fetch', event => {
         const networked = fetch(event.request)
           .then(fetched => {
             // Actualizar cache solo para recursos estáticos que no sean de noCacheUrls
-            if (!noCacheUrls.some(url => event.request.url.includes(url))) {
+            // y solo si es una respuesta completa (200)
+            if (!noCacheUrls.some(url => event.request.url.includes(url)) && fetched.status === 200) {
               caches.open(CACHE_NAME)
                 .then(cache => cache.put(event.request, fetched.clone()))
                 .catch(() => {});

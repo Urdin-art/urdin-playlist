@@ -1,0 +1,17 @@
+{
+    "logo": "\/logo.png",
+    "tagline": "Cara S - TODO SOBRE NOCTILUCA",
+    "tagline_html": "",
+
+    "playlist": "\/songs-S.json",
+    "storage": "retro-beat-player-side-s",
+    "use_exclusions": true,
+    "personal_list_button": {
+        "enabled": true,
+        "targetConfig": "my-side"
+    },
+    "refresh_button": {
+        "enabled": false
+    },
+    "theme": "S"
+}

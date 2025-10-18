@@ -24,11 +24,15 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
   useEffect(() => {
     if (!lyricsFile) {
       setLyrics([]);
+      setCurrentLineIndex(-1);
       return;
     }
 
     const loadLyrics = async () => {
       try {
+        // Resetear estado al cargar nueva letra
+        setLyrics([]);
+        setCurrentLineIndex(-1);
         const response = await fetch(lyricsFile);
         const vttText = await response.text();
         const parsedLyrics = parseVTT(vttText);
@@ -43,15 +47,21 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
   }, [lyricsFile]);
 
   useEffect(() => {
-    if (lyrics.length === 0) return;
+    // Si no hay letra, resetea
+    if (lyrics.length === 0) {
+      setCurrentLineIndex(-1);
+      return;
+    }
 
-    const currentIndex = lyrics.findIndex(
+    // Busca la línea que corresponde al tiempo actual
+    const newCurrentIndex = lyrics.findIndex(
       (line) => currentTime >= line.startTime && currentTime < line.endTime
     );
 
-    // Solo actualizar si el índice realmente cambió
-    if (currentIndex !== currentLineIndex) {
-      setCurrentLineIndex(currentIndex);
+    // Actualiza el índice SOLO si se encontró una línea válida y es diferente a la actual
+    // Esto hace que la última línea permanezca visible en los silencios
+    if (newCurrentIndex !== -1 && newCurrentIndex !== currentLineIndex) {
+      setCurrentLineIndex(newCurrentIndex);
     }
   }, [currentTime, lyrics, currentLineIndex]);
 
@@ -69,17 +79,29 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
         const startTime = parseTimeCode(startStr);
         const endTime = parseTimeCode(endStr);
         
-        // La siguiente línea debería contener el texto
+        // Recolectar todas las líneas de texto hasta encontrar la próxima marca de tiempo o línea vacía
         i++;
-        if (i < lines.length && lines[i].trim()) {
+        let textLines: string[] = [];
+        
+        while (i < lines.length && lines[i].trim() && !lines[i].includes(' --> ')) {
+          textLines.push(lines[i].trim());
+          i++;
+        }
+        
+        if (textLines.length > 0) {
+          // Unir todas las líneas con saltos de línea, pero limitar a máximo 2 líneas
+          const limitedLines = textLines.slice(0, 2); // Máximo 2 líneas
+          const limitedText = limitedLines.join('\n');
+          
           lyricLines.push({
             startTime,
             endTime,
-            text: lines[i].trim(),
+            text: limitedText,
           });
         }
+      } else {
+        i++;
       }
-      i++;
     }
     
     return lyricLines;
@@ -109,61 +131,74 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
     return 0;
   };
 
-  const getCurrentLyric = (): string => {
-    if (currentLineIndex >= 0 && currentLineIndex < lyrics.length) {
-      return lyrics[currentLineIndex].text;
-    }
-    return '';
-  };
-
-  const getPreviousLyric = (): string => {
-    if (currentLineIndex > 0 && currentLineIndex - 1 < lyrics.length) {
-      return lyrics[currentLineIndex - 1].text;
-    }
-    return '';
-  };
-
-  const getNextLyric = (): string => {
-    if (currentLineIndex >= 0 && currentLineIndex + 1 < lyrics.length) {
-      return lyrics[currentLineIndex + 1].text;
+  const getLyricLine = (index: number): string => {
+    if (index >= 0 && index < lyrics.length) {
+      return lyrics[index].text;
     }
     return '';
   };
 
   if (!lyricsFile || lyrics.length === 0) {
     return (
-      <Card className="lcd-screen h-32 flex items-center justify-center">
-        <div className="text-center">
+      <Card 
+        className="h-32 flex items-center justify-center"
+        style={{
+          backgroundColor: 'var(--lyricsCard-background)',
+          border: `var(--lyricsCard-borderWidth, 2px) solid var(--lyricsCard-borderColor, #fff)`,
+          borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)',
+          boxShadow: `0 0 var(--lyricsCard-glowSize, 0px) var(--lyricsCard-glowColor, transparent)`
+        }}
+      >
+        <div className="text-center" style={{ color: 'var(--lyricsCard-textDimmed)' }}>
           <div className="text-2xl mb-2">♪ ♫ ♪</div>
-          <p className="text-neon-cyan">Letra no disponible</p>
+          <p>Letra no disponible</p>
         </div>
       </Card>
     );
   }
 
   return (
-    <Card className="lyrics-display relative overflow-hidden">
-      <div className="lyrics-content">
+    <Card 
+      className="relative overflow-hidden h-32 flex flex-col justify-center"
+      style={{
+        backgroundColor: 'var(--lyricsCard-background)',
+        border: `var(--lyricsCard-borderWidth, 2px) solid var(--lyricsCard-borderColor, #fff)`,
+        borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)',
+        boxShadow: `0 0 var(--lyricsCard-glowSize, 0px) var(--lyricsCard-glowColor, transparent)`
+      }}
+    >
+      <div className="text-center transition-all duration-300 p-4 z-10">
         {/* Línea anterior */}
-        <div className="lyric-line lyric-prev">
-          {getPreviousLyric()}
-        </div>
+        <div
+          className="whitespace-pre-line opacity-60 text-sm"
+          style={{ color: 'var(--lyricsCard-textDimmed)' }}
+          dangerouslySetInnerHTML={{ __html: getLyricLine(currentLineIndex - 1) }}
+        />
         
-        {/* Línea actual */}
-        <div className="lyric-line lyric-current">
-          {getCurrentLyric() || '♪ ♫ ♪'}
-        </div>
+        <div
+          className="whitespace-pre-line font-bold text-lg my-2"
+          style={{
+            color: 'var(--lyricsCard-textHighlighted)',
+            textShadow: `0 0 10px var(--lyricsCard-textHighlighted)`
+          }}
+          dangerouslySetInnerHTML={{ __html: getLyricLine(currentLineIndex) || '♪ ♫ ♪' }}
+        />
         
-        {/* Línea siguiente */}
-        <div className="lyric-line lyric-next">
-          {getNextLyric()}
-        </div>
+        <div
+          className="whitespace-pre-line opacity-80 text-sm"
+          style={{ color: 'var(--lyricsCard-textDimmed)' }}
+          dangerouslySetInnerHTML={{ __html: getLyricLine(currentLineIndex + 1) }}
+        />
       </div>
       
-      {/* Efecto de escaneo LCD mejorado */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="scan-lines"></div>
-      </div>
+      {/* Efecto de escaneo LCD */}
+      <div 
+        className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+        style={{
+          background: `repeating-linear-gradient(0deg, transparent 0px, transparent 2px, var(--lyricsCard-scanlines) 2px, var(--lyricsCard-scanlines) 4px)`,
+          animation: isPlaying ? 'scan-move 3s linear infinite' : 'none'
+        }}
+      ></div>
     </Card>
   );
 };

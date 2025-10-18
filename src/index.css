@@ -2,299 +2,264 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Synthwave Music Player Design System */
-
 @layer base {
-  :root {
-    /* Synthwave Dark Background */
-    --background: 248 24% 6%;
-    --foreground: 300 20% 95%;
-
-    /* Cards with glass effect */
-    --card: 248 24% 8%;
-    --card-foreground: 300 20% 95%;
-
-    --popover: 248 24% 8%;
-    --popover-foreground: 300 20% 95%;
-
-    /* Neon Pink Primary */
-    --primary: 320 100% 70%;
-    --primary-foreground: 248 24% 6%;
-
-    /* Neon Cyan Secondary */
-    --secondary: 180 100% 70%;
-    --secondary-foreground: 248 24% 6%;
-
-    /* Muted with purple tint */
-    --muted: 248 24% 12%;
-    --muted-foreground: 300 20% 65%;
-
-    /* Neon Purple Accent */
-    --accent: 280 100% 70%;
-    --accent-foreground: 248 24% 6%;
-
-    --destructive: 0 100% 70%;
-    --destructive-foreground: 248 24% 6%;
-
-    --border: 300 20% 20%;
-    --input: 248 24% 12%;
-    --ring: 320 100% 70%;
-
-    --radius: 0.75rem;
-
-    /* Synthwave specific colors */
-    --neon-pink: 320 100% 70%;
-    --neon-cyan: 180 100% 70%;
-    --neon-purple: 280 100% 70%;
-    --neon-orange: 35 100% 70%;
-    --dark-purple: 248 24% 6%;
-    --dark-purple-light: 248 24% 12%;
-    
-    /* Gradients */
-    --gradient-synthwave: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-purple)));
-    --gradient-cyber: linear-gradient(180deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
-    --gradient-background: linear-gradient(135deg, hsl(var(--dark-purple)), hsl(248 30% 8%));
-    
-    /* Glows */
-    --glow-pink: 0 0 20px hsl(var(--neon-pink) / 0.5);
-    --glow-cyan: 0 0 20px hsl(var(--neon-cyan) / 0.5);
-    --glow-purple: 0 0 20px hsl(var(--neon-purple) / 0.5);
-    
-    /* Animations */
-    --transition-neon: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --pulse-duration: 2s;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  body {
+    @apply text-foreground;
+    background: var(--background);
+    background-attachment: fixed;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem; /* Increased base font size */
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
-
-  body {
-    @apply bg-background text-foreground;
-    background: linear-gradient(135deg, hsl(var(--dark-purple)), hsl(248 30% 8%), hsl(210 60% 4%));
-    background-attachment: fixed;
-    font-family: 'Courier New', monospace;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
 }
 
-/* Synthwave Custom Components */
 @layer components {
-  .neon-border {
-    border: 2px solid hsl(var(--neon-pink));
-    box-shadow: var(--glow-pink), inset var(--glow-pink);
+  .theme-album-art-card {
+    background: var(--albumArtCard-gradient);
+    border: var(--albumArtCard-border-width) solid var(--albumArtCard-border-color);
+    border-radius: var(--albumArtCard-border-radius);
+    box-shadow: 0 0 var(--albumArtCard-glow-size) var(--albumArtCard-glow-color);
   }
-  
-  .neon-text {
-    color: hsl(var(--neon-cyan));
-    text-shadow: var(--glow-cyan);
+
+  .theme-player-card {
+    background: var(--playerCard-gradient);
+    border: var(--playerCard-border-width) solid var(--playerCard-border-color);
+    border-radius: var(--playerCard-border-radius);
+    box-shadow: 0 0 var(--playerCard-glow-size) var(--playerCard-glow-color);
   }
-  
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+  .theme-playlist-card {
+    background: var(--playlistCard-gradient);
+    border: var(--playlistCard-border-width) solid var(--playlistCard-border-color);
+    border-radius: var(--playlistCard-border-radius);
+    box-shadow: 0 0 var(--playlistCard-glow-size) var(--playlistCard-glow-color);
   }
-  
+
+  .theme-exclusions-card {
+    background: var(--exclusionsCard-gradient);
+    border: var(--exclusionsCard-border-width) solid var(--exclusionsCard-border-color);
+    border-radius: var(--exclusionsCard-border-radius);
+    box-shadow: 0 0 var(--exclusionsCard-glow-size) var(--exclusionsCard-glow-color);
+  }
+
   .synthwave-button {
-    background: var(--gradient-synthwave);
-    border: none;
-    padding: 0.5rem 1rem;
+    background: var(--button-inactive-bg-gradient);
+    color: var(--text-primary-custom);
+    border-width: var(--button-border-width);
+    border-style: solid;
+    border-color: var(--button-inactive-border-color);
+    padding: 0.75rem 1.5rem;
     border-radius: var(--radius);
-    color: hsl(var(--foreground));
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: var(--transition-neon);
-    box-shadow: var(--glow-pink);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-inactive);
+    font-size: 1.1rem;
   }
-  
+
   .synthwave-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px hsl(var(--neon-pink) / 0.8);
-  }
-  
-  .lyrics-display {
-    background: linear-gradient(145deg, hsl(180 100% 3%) 0%, hsl(180 60% 6%) 50%, hsl(180 100% 4%) 100%);
-    border: 2px solid hsl(var(--neon-cyan) / 0.4);
-    border-radius: var(--radius);
-    padding: 1rem;
-    font-family: 'Courier New', monospace;
-    color: hsl(var(--neon-cyan));
-    box-shadow: 
-      inset 0 0 30px hsl(var(--neon-cyan) / 0.08),
-      0 0 40px hsl(var(--neon-cyan) / 0.15),
-      0 0 0 1px hsl(var(--neon-cyan) / 0.1);
-    position: relative;
-    height: 120px;
-    overflow: hidden;
+    background: var(--button-hover-bg-gradient);
+    color: var(--synthwave-button-hover-icon-color);
+    border-color: var(--button-hover-border-color);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-hover);
   }
 
-  .lyrics-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
+  .synthwave-button.active {
+    transform: translateY(-2px);
+    background: var(--button-active-bg-gradient);
+    color: var(--synthwave-button-active-icon-color);
+    border-color: var(--button-active-border-color);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-active);
+}
 
-  .lyric-line {
-    text-align: center;
-    transition: all 0.3s ease;
-    font-family: 'Courier New', monospace;
-  }
+.DropdownMenuContent {
+  background: var(--navigation-gradient) !important;
+  border-width: var(--nav-border-width) !important;
+  border-color: var(--nav-border-color) !important;
+  border-radius: var(--nav-border-radius) !important;
+}
 
-  .lyric-prev {
-    opacity: 0.4;
-    font-size: 0.875rem;
-    color: hsl(var(--neon-cyan) / 0.6);
-  }
+.DropdownMenuItem {
+  color: var(--popover-foreground) !important;
+}
 
-  .lyric-current {
-    font-size: 1.125rem;
+  .themed-button {
+    background: hsla(var(--secondary-h), 30%, 15%, 0.7);
+    color: var(--buttons-inactive-iconColor);
+    border: 1px solid var(--buttons-inactive-borderColor);
+    padding: 0.3rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
     font-weight: bold;
-    color: hsl(var(--neon-cyan));
-    text-shadow: 0 0 8px hsl(var(--neon-cyan) / 0.8);
-    margin: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 5px var(--buttons-inactive-glowColor);
+    backdrop-filter: blur(5px);
   }
 
-  .lyric-next {
-    opacity: 0.6;
-    font-size: 0.875rem;
-    color: hsl(var(--neon-cyan) / 0.7);
+  .themed-card {
+    background: hsla(var(--secondary-h), 30%, 15%, 0.7);
+    color: var(--buttons-inactive-iconColor);
+    border: 1px solid var(--buttons-inactive-borderColor);
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 5px var(--buttons-inactive-glowColor);
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease-in-out;
   }
 
-  .scan-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 2px,
-      hsl(var(--neon-cyan) / 0.03) 2px,
-      hsl(var(--neon-cyan) / 0.03) 4px
-    );
-    animation: scan-move 3s linear infinite;
-    pointer-events: none;
+  .interactive-card {
+    background: hsla(var(--secondary-h), 30%, 15%, 0.7);
+    color: var(--buttons-inactive-iconColor);
+    border: 1px solid var(--buttons-inactive-borderColor);
+    padding: 0.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 5px var(--buttons-inactive-glowColor);
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease-in-out;
   }
 
-  @keyframes scan-move {
-    0% { transform: translateY(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(100%); opacity: 0; }
+  .interactive-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--buttons-inactive-glowColor);
   }
-  
-  .pulse-glow {
-    animation: pulse-glow var(--pulse-duration) ease-in-out infinite alternate;
+
+  /* Styling for the Switch component */
+  /* Unchecked state track */
+  [role="switch"][data-state="unchecked"] {
+    background-color: hsl(var(--input)) !important;
+    border: 1px solid var(--buttons-inactive-borderColor) !important;
+  }
+
+  /* Checked state track */
+  [role="switch"][data-state="checked"] {
+    background-color: hsl(var(--primary)) !important;
+    border: 1px solid var(--buttons-active-borderColor) !important;
+  }
+
+  /* Thumb */
+  [role="switch"] span {
+    background-color: var(--switch-thumb-background) !important;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  [role="switch"]:hover span {
+    opacity: 1;
+  }
+
+  .text-primary-custom {
+    color: var(--text-primary-custom);
+  }
+
+  .text-dimmed {
+    color: var(--text-dimmed);
+  }
+
+  .text-highlighted {
+    color: var(--text-highlighted);
+    text-shadow: 0 0 5px var(--text-highlighted);
+  }
+
+  .icon-button {
+    background: hsla(var(--secondary-h), 30%, 15%, 0.7);
+    color: var(--buttons-inactive-iconColor);
+    border: 1px solid var(--buttons-inactive-borderColor);
+    border-radius: 9999px;
+    box-shadow: 0 0 5px var(--buttons-inactive-glowColor);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+.crt-glow-animated {
+  animation: crt-pulse 3s ease-in-out infinite alternate, crt-flicker 0.1s ease-in-out infinite alternate;
+}}
+
+@keyframes crt-pulse {
+  0% {
+    box-shadow: 0 0 var(--lyricsCard-glowSize) var(--lyricsCard-glowColor);
+  }
+  100% {
+    box-shadow: 0 0 calc(var(--lyricsCard-glowSize) * 1.5) var(--lyricsCard-glowColor), 0 0 calc(var(--lyricsCard-glowSize) * 2) var(--lyricsCard-glowColor);
   }
 }
 
-@layer utilities {
-  .text-neon-pink {
-    color: hsl(var(--neon-pink));
-    text-shadow: var(--glow-pink);
+@keyframes crt-flicker {
+  0%, 100% {
+    opacity: 1;
   }
-  
-  .text-neon-cyan {
-    color: hsl(var(--neon-cyan));
-    text-shadow: var(--glow-cyan);
-  }
-  
-  .text-neon-purple {
-    color: hsl(var(--neon-purple));
-    text-shadow: var(--glow-purple);
-  }
-  
-  .bg-gradient-synthwave {
-    background: var(--gradient-synthwave);
-  }
-  
-  .bg-gradient-cyber {
-    background: var(--gradient-cyber);
-  }
-  
-  .animate-slide-down {
-    animation: slide-down 0.3s ease-out forwards;
+  50% {
+    opacity: 0.95;
   }
 }
 
-@keyframes slide-down {
-  from {
+@keyframes scan-move {
+  0% {
     transform: translateY(-100%);
     opacity: 0;
   }
-  to {
-    transform: translateY(0);
+  50% {
     opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
   }
 }
 
-@keyframes pulse-glow {
-  0% {
-    box-shadow: var(--glow-cyan);
-  }
-  100% {
-    box-shadow: 0 0 30px hsl(var(--neon-cyan) / 0.8), 0 0 60px hsl(var(--neon-cyan) / 0.4);
-  }
+/* Custom styles for Tabs in Admin Page */
+[role="tablist"] {
+  background-color: var(--simple-card-background) !important;
+  border-radius: 0.75rem !important;
+  padding: 0.5rem !important;
+}
+
+[role="tab"] {
+  background-color: transparent !important;
+  color: var(--simple-secondary) !important;
+  font-weight: bold !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+[role="tab"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--simple-primary) !important;
+}
+
+[role="tab"][data-state="active"] {
+  background-color: var(--simple-accent) !important;
+  color: #000 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.theme-editor-group {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.admin-form-input {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--borders-playlistItem-color) !important;
+  color: var(--text-primary-custom) !important;
+}
+
+.synthwave-button-delete {
+  color: #8B0000 !important;
+  border-color: #8B0000 !important;
+  font-weight: bold;
+}
+
+.synthwave-icon-button {
+  padding: 0 !important;
 }

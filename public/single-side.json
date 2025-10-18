@@ -1,0 +1,15 @@
+{
+    "logo": "\/logo.png",
+    "tagline": "Escuchando: {CURRENT_SONG_TITLE}",
+
+    "playlist": "",
+    "storage": "retro-beat-player-single",
+    "use_exclusions": false,
+    "personal_list_button": {
+        "enabled": true
+    },
+    "refresh_button": {
+        "enabled": false
+    },
+    "theme": "single"
+}

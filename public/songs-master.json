@@ -1,0 +1,172 @@
+[
+    {
+        "id": "raiz",
+        "title": "The earth, mi tierra, minha raiz",
+        "artist": "_UrDiN.art_",
+        "album": "\ud83c\udf0e",
+        "duration": "5:16",
+        "audioFile": "\/audio\/The_earth,_mi_tierra,_minha_raiz._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/raiz.jpg",
+        "lyricsFile": "\/lyrics\/raiz2.vtt"
+    },
+    {
+        "id": "una-se\u00f1al-1754324238",
+        "title": "Una se\u00f1al",
+        "artist": "_UrD\u00edN.art_",
+        "album": "Versi\u00f3n original 1.5",
+        "duration": "04:06",
+        "audioFile": "\/audio\/Una se\u00f1al._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/senal.jpg",
+        "lyricsFile": "\/lyrics\/se\u00f1al.vtt"
+    },
+    {
+        "id": "magia",
+        "title": "Magia y ciencia",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v2",
+        "duration": "4:45",
+        "audioFile": "\/audio\/Magia_y_ciencia._UrD\u00edN.art_.mp3",
+        "albumArt": "\/albums\/magia.jpg",
+        "lyricsFile": "\/lyrics\/magia.vtt"
+    },
+    {
+        "id": "juego",
+        "title": "Jodido juego",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v2",
+        "duration": "5:55",
+        "audioFile": "\/audio\/Jodido_juego._UrD\u00edN.art_.mp3",
+        "albumArt": "\/albums\/juego2.jpg",
+        "lyricsFile": "\/lyrics\/juego.vtt"
+    },
+    {
+        "id": "sendero",
+        "title": "El sendero de Brianna",
+        "artist": "_UrDiN.art_",
+        "album": " ",
+        "duration": "4:50",
+        "audioFile": "\/audio\/El_sendero_de_Brianna._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/sendero.jpg",
+        "lyricsFile": "\/lyrics\/sendero.vtt"
+    },
+    {
+        "id": "canci\u00f3n-de-guerra-1754051253",
+        "title": "Canci\u00f3n de guerra",
+        "artist": "_UrDiN.art_",
+        "album": "Synthwave",
+        "duration": "03:51",
+        "audioFile": "\/audio\/Canci\u00f3n_de_guerra. _UrD\u00edN.art_.mp3",
+        "albumArt": "\/albums\/guerra.jpg",
+        "lyricsFile": "\/lyrics\/guerra.vtt"
+    },
+    {
+        "id": "estrella-fugaz-1754339101",
+        "title": "Estrella fugaz",
+        "artist": "_UrD\u00edN.art_",
+        "album": "Remake v3",
+        "duration": "04:08",
+        "audioFile": "\/audio\/Estrella fugaz. UrDiN.art. (Remake v3).mp3",
+        "albumArt": "\/albums\/fugaz.jpg",
+        "lyricsFile": "\/lyrics\/estrella3.vtt"
+    },
+    {
+        "id": "ave",
+        "title": "Ave de Fuego",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v3",
+        "duration": "6:11",
+        "audioFile": "\/audio\/Ave_de_Fuego._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/fuego.jpg",
+        "lyricsFile": "\/lyrics\/fuego2.vtt"
+    },
+    {
+        "id": "guardi\u00e1n-1754052319",
+        "title": "Guardi\u00e1n",
+        "artist": "_UrDiN.art_",
+        "album": "\ud83c\udf0e",
+        "duration": "03:57",
+        "audioFile": "\/audio\/Guardi\u00e1n._UrD\u00edN.art_.mp3",
+        "albumArt": "\/albums\/alma.jpg",
+        "lyricsFile": "\/lyrics\/guardian.vtt"
+    },
+    {
+        "id": "hechizo",
+        "title": "Hechizo de destierro",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v3",
+        "duration": "6:24",
+        "audioFile": "\/audio\/Hechizo_de_destierro._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/hechizo.jpg",
+        "lyricsFile": "\/lyrics\/hechizo.vtt"
+    },
+    {
+        "id": "glitch-in-the-matrix-1754686147",
+        "title": "Glitch in the MATRIX",
+        "artist": "Mr. Hyde (UrDiN's alter: ISMAEL)",
+        "album": "Neurodivergent tales",
+        "duration": "03:43",
+        "audioFile": "\/audio\/Glitch in the MATRIX. _UrDiN.art_.mp3",
+        "albumArt": "\/albums\/glitch.png",
+        "lyricsFile": "\/lyrics\/glitch.vtt"
+    },
+    {
+        "id": "promesas-de-libertad-1754520060",
+        "title": "Promesas de libertad",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v1",
+        "duration": "04:42",
+        "audioFile": "\/audio\/Promesas de libertad._UrDiN_.(Remake).mp3",
+        "albumArt": "\/albums\/promesas.png",
+        "lyricsFile": "\/lyrics\/promesas.vtt"
+    },
+    {
+        "id": "lluvia-en-tu-piel-1754537005",
+        "title": "Lluvia en tu piel",
+        "artist": "_UrDiN.art_ 2024",
+        "album": "https:\/\/youtu.be\/jZaj6aSE1go",
+        "duration": "04:06",
+        "audioFile": "\/audio\/Lluvia en tu piel. UrDiN.art.mp3",
+        "albumArt": "\/albums\/lluvia.png",
+        "lyricsFile": "\/lyrics\/lluvia.vtt"
+    },
+    {
+        "id": "in-legenda-deae-1754368796",
+        "title": "In Legenda Deae",
+        "artist": "_UrDiN.art_  Remake v.2753",
+        "album": "https:\/\/youtu.be\/TfnDeVLf8oY",
+        "duration": "05:28",
+        "audioFile": "\/audio\/In Legenda Deae._UrDiN.art_.mp3",
+        "albumArt": "\/albums\/legenda.jpg",
+        "lyricsFile": "\/lyrics\/legenda.vtt"
+    },
+    {
+        "id": "\u00f1o\u00f1ow-fu-1754751407",
+        "title": "\u00d1o\u00f1ow Fu",
+        "artist": "_UrDiN.mad_",
+        "album": "\ud83d\ude43 X-Side \ud83d\ude43",
+        "duration": "02:21",
+        "audioFile": "\/audio\/\u00d1o\u00f1ow Fu. _UrDiN.art_.mp3",
+        "albumArt": "\/albums\/\u00f1o\u00f1ow.jpg",
+        "lyricsFile": "\/lyrics\/\u00f1o\u00f1ow.vtt"
+    },
+    {
+        "id": "\u00f1aw-1754752416",
+        "title": "\u00d1aw",
+        "artist": "UrDiN  + \ud83d\udc08\u200d\u2b1b Paco \ud83d\udc08\u200d\u2b1b",
+        "album": "\u00d1aw wuau \u00f1aw",
+        "duration": "02:47",
+        "audioFile": "\/audio\/\u00d1aw.UrDiN.mp3",
+        "albumArt": "\/albums\/\u00f1aw.jpg",
+        "lyricsFile": "\/lyrics\/\u00f1aw.vtt"
+    },
+    {
+        "id": "ardora",
+        "title": "Sea of Ardora",
+        "artist": "_UrDiN.art_",
+        "album": "Remake v2",
+        "duration": "4:34",
+        "audioFile": "\/audio\/68a4b80d280b6_Sea of Ardora.mp3",
+        "albumArt": "\/albums\/68a4b80d28cf4.jpg",
+        "lyricsFile": "\/lyrics\/68a4b80d3871f_ardora.vtt"
+    }
+]

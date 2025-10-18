@@ -1,12 +1,12 @@
 {
   "name": "UrDíN.art",
   "short_name": "UrDíN.art",
-  "description": "Plataforma musical de UrDíN.art",
+  "description": "UrDíN.art Music Player",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#1a0b2e",
-  "theme_color": "#ff00ff",
+  "theme_color": "#1a0b2e",
   "orientation": "portrait",
   "icons": [
     {

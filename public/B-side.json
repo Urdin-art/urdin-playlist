@@ -1,0 +1,16 @@
+{
+    "logo": "\/logo-b.png",
+    "tagline": "Versiones alternativas, temas antiguos y canciones en ingl\u00e9s - Cara B",
+
+    "playlist": "\/songs-b.json",
+    "storage": "retro-beat-player-side-b",
+    "use_exclusions": true,
+    "personal_list_button": {
+        "enabled": true,
+        "targetConfig": "my-side"
+    },
+    "refresh_button": {
+        "enabled": false
+    },
+    "theme": "B"
+}

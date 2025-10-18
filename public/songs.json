@@ -1,33 +1,23 @@
 [
   {
-    "id": "conjuro3",
-    "title": "Conjuro de destierro v3.0",
+    "id": "raiz",
+    "title": "The earth, mi tierra, minha raiz",
     "artist": "_UrDiN.art_",
-    "album": "Remake v3 - Plus+ 💪",
-    "duration": "06:30",
-    "audioFile": "/audio/Conjuro_de_destierro-v.3._UrDiN.art_.mp3",
-    "albumArt": "/albums/conjuro3.jpg",
-    "lyricsFile": "/lyrics/conjuro3.vtt"
+    "album": "🌎",
+    "duration": "5:16",
+    "audioFile": "/audio/The_earth,_mi_tierra,_minha_raiz._UrDiN.art_.mp3",
+    "albumArt": "/albums/raiz.jpg",
+    "lyricsFile": "/lyrics/raiz2.vtt"
   },
   {
-    "id": "juego",
-    "title": "Jodido juego",
-    "artist": "_UrDiN.art_",
-    "album": "Remake v2",
-    "duration": "5:55",
-    "audioFile": "/audio/Jodido_juego._UrDíN.art_.mp3",
-    "albumArt": "/albums/juego2.jpg",
-    "lyricsFile": "/lyrics/juego.vtt"
-  },
-  {
-    "id": "ave",
-    "title": "Ave de Fuego",
-    "artist": "_UrDiN.art_",
-    "album": "Remake v3",
-    "duration": "6:11",
-    "audioFile": "/audio/Ave_de_Fuego._UrDiN.art_.mp3",
-    "albumArt": "/albums/fuego.jpg",
-    "lyricsFile": "/lyrics/fuego2.vtt"
+    "id": "una-señal-1754324238",
+    "title": "Una señal",
+    "artist": "_UrDíN.art_",
+    "album": "Versión original 1.5",
+    "duration": "04:06",
+    "audioFile": "/audio/Una señal._UrDiN.art_.mp3",
+    "albumArt": "/albums/señal.jpg",
+    "lyricsFile": "/lyrics/señal.vtt"
   },
   {
     "id": "magia",
@@ -40,6 +30,16 @@
     "lyricsFile": "/lyrics/magia.vtt"
   },
   {
+    "id": "juego",
+    "title": "Jodido juego",
+    "artist": "_UrDiN.art_",
+    "album": "Remake v2",
+    "duration": "5:55",
+    "audioFile": "/audio/Jodido_juego._UrDíN.art_.mp3",
+    "albumArt": "/albums/juego.png",
+    "lyricsFile": "/lyrics/juego.vtt"
+  },
+  {
     "id": "sendero",
     "title": "El sendero de Brianna",
     "artist": "_UrDiN.art_",
@@ -48,26 +48,6 @@
     "audioFile": "/audio/El_sendero_de_Brianna._UrDiN.art_.mp3",
     "albumArt": "/albums/sendero.jpg",
     "lyricsFile": "/lyrics/sendero.vtt"
-  },
-  {
-    "id": "raiz",
-    "title": "The earth, mi tierra, minha raiz",
-    "artist": "_UrDiN.art_",
-    "album": " ",
-    "duration": "5:16",
-    "audioFile": "/audio/The_earth,_mi_tierra,_minha_raiz._UrDiN.art_.mp3",
-    "albumArt": "/albums/raiz.jpg",
-    "lyricsFile": "/lyrics/raiz.vtt"
-  },
-  {
-    "id": "hechizo",
-    "title": "Hechizo de destierro",
-    "artist": "_UrDiN.art_",
-    "album": "Remake v3",
-    "duration": "6:24",
-    "audioFile": "/audio/Hechizo_de_destierro._UrDiN.art_.mp3",
-    "albumArt": "/albums/hechizo.jpg",
-    "lyricsFile": "/lyrics/hechizo.vtt"
   },
   {
     "id": "canción-de-guerra-1754051253",
@@ -80,6 +60,26 @@
     "lyricsFile": "/lyrics/guerra.vtt"
   },
   {
+    "id": "estrella-fugaz-1754339101",
+    "title": "Estrella fugaz",
+    "artist": "_UrDíN.art_",
+    "album": "Remake v3",
+    "duration": "04:08",
+    "audioFile": "/audio/Estrella fugaz. UrDiN.art. (Remake v3).mp3",
+    "albumArt": "/albums/fugaz.jpg",
+    "lyricsFile": "/lyrics/estrella3.vtt"
+  },
+  {
+    "id": "ave",
+    "title": "Ave de Fuego",
+    "artist": "_UrDiN.art_",
+    "album": "Remake v3",
+    "duration": "6:11",
+    "audioFile": "/audio/Ave_de_Fuego._UrDiN.art_.mp3",
+    "albumArt": "/albums/fuego.jpg",
+    "lyricsFile": "/lyrics/fuego2.vtt"
+  },
+  {
     "id": "guardián-1754052319",
     "title": "Guardián",
     "artist": "_UrDiN.art_",
@@ -88,5 +88,15 @@
     "audioFile": "/audio/Guardián._UrDíN.art_.mp3",
     "albumArt": "/albums/alma.jpg",
     "lyricsFile": "/lyrics/guardian.vtt"
+  },
+  {
+    "id": "hechizo",
+    "title": "Hechizo de destierro",
+    "artist": "_UrDiN.art_",
+    "album": "Remake v3",
+    "duration": "6:24",
+    "audioFile": "/audio/Hechizo_de_destierro._UrDiN.art_.mp3",
+    "albumArt": "/albums/hechizo.jpg",
+    "lyricsFile": "/lyrics/hechizo.vtt"
   }
 ]

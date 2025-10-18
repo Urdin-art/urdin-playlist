@@ -1,0 +1,18 @@
+{
+    "logo": "\/logo.png",
+    "tagline": "Panel de Administraci\u00f3n",
+    "sideSwitcher": {
+        "text": "",
+        "targetConfig": ""
+    },
+    "playlist": "",
+    "storage": "retro-beat-player-admin",
+    "use_exclusions": false,
+    "personal_list_button": {
+        "enabled": false
+    },
+    "refresh_button": {
+        "enabled": false
+    },
+    "theme": "A"
+}

@@ -31,7 +31,8 @@ export const useAppConfig = (defaultConfig = 'A-side') => {
     root.style.setProperty('--nav-border-radius', c.borders.albumArtCard.radius);
 
     // Custom variable for the switch thumb
-    root.style.setProperty('--switch-thumb-background', c.buttons.active.iconColor);
+    root.style.setProperty('--switch-thumb-background', c.buttons.inactive.iconColor);
+    root.style.setProperty('--switch-thumb-background-checked', c.buttons.active.iconColor);
 
     root.style.setProperty('--foreground', c.text.headerFooter.normal);
     root.style.setProperty('--primary', c.buttons.active.borderColor.match(/(\d+),\s*([\d%]+),\s*([\d%]+)/).slice(1).join(' '));
@@ -58,7 +59,7 @@ export const useAppConfig = (defaultConfig = 'A-side') => {
 
     // --- Set variables for custom CSS ---
     root.style.setProperty('--text-primary-custom', c.buttons.inactive.iconColor);
-    root.style.setProperty('--text-dimmed', c.text.player.album);
+    root.style.setProperty('--text-dimmed', c.text.headerFooter.normal);
     root.style.setProperty('--text-highlighted', c.text.headerFooter.highlighted);
 
     // --- Set variables for synthwave button icon colors ---

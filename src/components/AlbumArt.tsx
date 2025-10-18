@@ -72,8 +72,8 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
 
   return (
     <TooltipProvider>
-      <Card className="p-2 w-full h-full bg-transparent border-none shadow-none">
-        <div className="relative w-full h-full rounded-lg overflow-hidden">
+      <Card className="w-full h-full bg-transparent border-none shadow-none">
+        <div className="relative w-full h-full overflow-hidden">
           <ImageLoader
             basePath={basePath}
             alt={`${song.album} - ${song.artist}`}
@@ -106,19 +106,20 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
           <div className="absolute bottom-2 right-2 flex items-center gap-2 pointer-events-auto z-20">
             <Tooltip>
               <TooltipTrigger asChild>
-                <div 
-                  className="themed-button flex items-center gap-2 cursor-pointer"
-                >
-                  {animationsEnabled ? (
-                    <Video className="h-6 w-6" style={{ color: 'var(--navigation-hoverTextColor)' }} />
-                  ) : (
-                    <VideoOff className="h-6 w-6" style={{ color: 'var(--navigation-textColor)' }} />
-                  )}
-                  <Switch
-                    checked={animationsEnabled}
-                    onCheckedChange={setAnimationsEnabled}
-                  />
-                </div>
+              <div className="opacity-50 hover:opacity-100 transition-opacity duration-300">
+                                  <div 
+                                    className={`themed-switch-container flex items-center gap-2 cursor-pointer ${animationsEnabled ? 'active' : ''}`}
+                                  >
+                                    {animationsEnabled ? (
+                                      <Video className="h-6 w-6 active" />
+                                    ) : (
+                                      <VideoOff className="h-6 w-6" />
+                                    )}
+                                    <Switch
+                                      checked={animationsEnabled}
+                                      onCheckedChange={setAnimationsEnabled}
+                                    />
+                                  </div>              </div>
               </TooltipTrigger>
               <TooltipContent 
                 className="z-50 rounded-lg p-2"

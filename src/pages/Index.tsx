@@ -175,9 +175,10 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen space-y-8 py-4 px-4 sm:px-8 lg:px-12">
-      <div className="h-11 md:h-20" />
+    <>
       <GradientMenu />
+      <div className="min-h-screen space-y-12 lg:space-y-[4.5rem] pb-4 px-6 sm:px-12 lg:px-[4.5rem]">
+        <div className="h-4" />
 
       {/* PWA Install Banner */}
       {showInstallBanner && !isAppInstalled && (
@@ -233,9 +234,9 @@ const Index = () => {
       </div>
 
       {/* Top Section: Album Art + Player Controls */}
-      <div className="flex flex-col xl:flex-row gap-8 items-stretch">
+      <div className="flex flex-col xl:flex-row gap-12 lg:gap-[4.5rem] items-stretch">
         {/* Album Art */}
-        <div className="w-full xl:w-1/3 theme-album-art-card aspect-square max-w-[500px] max-h-[500px] mx-auto" style={{ zIndex: 1 }}>
+        <div className="w-full xl:w-1/3 theme-album-art-card aspect-square max-w-[500px] max-h-[500px] mx-auto overflow-hidden" style={{ zIndex: 1 }}>
           {currentSong && (
             <AlbumArt
               song={currentSong}
@@ -280,7 +281,7 @@ const Index = () => {
 
       {/* Playlists Section */}
       {!isLoading && config?.playlist && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-[4.5rem]">
           {/* Active Playlist */}
           <div className={`theme-playlist-card ${!config?.use_exclusions ? 'md:col-span-2' : ''}`}>
             <Playlist
@@ -340,6 +341,7 @@ const Index = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

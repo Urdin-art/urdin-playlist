@@ -80,7 +80,7 @@ export default function GradientMenu() {
 
   return (
     <>
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 z-40">
+      <div className="fixed left-1/2 -translate-x-1/2 z-40" style={{ top: '1rem' }}>
         <ul className="flex gap-2 md:gap-6">
           {menuItems.map(({ title, icon, gradientFrom, gradientTo, action }, idx) => (
             <li
@@ -90,7 +90,7 @@ export default function GradientMenu() {
                 '--gradient-to': gradientTo,
                 background: 'linear-gradient(to bottom, var(--menu-button-gradient-color), rgba(0, 0, 0, 0.85))'
               }}
-              className="relative w-[2.5rem] h-[2.5rem] md:w-[3.75rem] md:h-[3.75rem] shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[7.5rem] md:hover:w-[11.25rem] hover:shadow-none group cursor-pointer"
+              className="relative w-[1.875rem] h-[1.875rem] md:w-[2.8125rem] md:h-[2.8125rem] shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[5.625rem] md:hover:w-[8.4375rem] hover:shadow-none group cursor-pointer"
               onClick={action}
             >
               {/* Gradient background on hover */}

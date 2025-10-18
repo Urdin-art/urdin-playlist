@@ -148,11 +148,12 @@ export const Playlist: React.FC<PlaylistProps> = ({
             <div
               key={song.id}
               className={`
-                flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 playlist-item
-                ${isActive ? 'cursor-pointer' : ''}
+                flex items-center gap-3 p-3 rounded-lg transition-all duration-300 playlist-item
+                ${isActive ? 'cursor-pointer themed-card interactive-card' : ''}
                 ${currentSongId === song.id && isActive ? 'playlist-item-active' : ''}
               `}
               style={{
+                borderStyle: 'solid',
                 borderColor: 'var(--borders-playlistItem-color)',
                 borderWidth: 'var(--borders-playlistItem-width)',
                 borderRadius: 'var(--borders-playlistItem-radius)',
@@ -185,7 +186,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
                           onSongToggle(song.id);
                         }
                       }}
-                      className={`h-8 w-8`}
+                      className={`h-8 w-8 star-button`}
                       style={{ color: personalPlaylist.includes(song.id) ? 'var(--text-playlist-icons)' : 'var(--text-playlist-secondary)' }}
                     >
                       <Star className={`h-4 w-4 ${personalPlaylist.includes(song.id) ? 'fill-current' : ''}`} />

@@ -259,8 +259,8 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
        <div className="absolute top-4 left-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button h-8 w-8 ${personalPlaylist.includes(currentSong.id) ? 'active' : ''}`}>
-              <Star className={`h-4 w-4 ${personalPlaylist.includes(currentSong.id) ? 'fill-current' : ''}`} />
+            <Button variant="ghost" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'active' : ''}`}>
+              <Star className={`h-5 w-5 ${personalPlaylist.includes(currentSong.id) ? 'fill-current' : ''}`} />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom"><p>{personalPlaylist.includes(currentSong.id) ? 'Eliminar de Mi Lista' : 'Añadir a Mi Lista'}</p></TooltipContent>
@@ -269,8 +269,8 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       <div className="absolute top-4 right-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button h-8 w-8">
-              <Download className="h-4 w-4" />
+            <Button variant="ghost" onClick={() => downloadSong(currentSong.id)} className="synthwave-button h-10 w-10">
+              <Download className="h-5 w-5" />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom"><p>Descargar en MP3</p></TooltipContent>
@@ -294,19 +294,24 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       </div>
 
       <div className="flex items-center justify-center gap-4 mb-4">
-        <Button variant="outline" size="icon" onClick={handlePrevious} className="synthwave-button"><SkipBack className="h-4 w-4" /></Button>
-        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button h-[3.2rem] w-[3.2rem] ${isPlaying ? 'active' : ''}`} disabled={isBuffering}>
-          {isBuffering ? <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause className="h-[2.5rem] w-[2.5rem]" /> : <Play className="h-[2.5rem] w-[2.5rem]" />}
+        <Button onClick={handlePrevious} className="synthwave-button h-10 w-10"><SkipBack className="h-5 w-5" /></Button>
+        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button h-[3.5rem] w-[3.5rem] ${isPlaying ? 'active' : ''}`} disabled={isBuffering}>
+          {isBuffering ? <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause className="h-[2.8rem] w-[2.8rem]" /> : <Play className="h-[2.8rem] w-[2.8rem]" />}
         </Button>
-        <Button variant="outline" size="icon" onClick={handleNext} className="synthwave-button"><SkipForward className="h-4 w-4" /></Button>
+        <Button onClick={handleNext} className="synthwave-button h-10 w-10"><SkipForward className="h-5 w-5" /></Button>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <div className="interactive-card opacity-80 hover:opacity-100 transition-all duration-300 flex items-center gap-2">
-                <PlayCircle className={`h-6 w-6 ${isAutoplay ? 'text-primary-custom' : 'text-dimmed'}`} />
+            <TooltipTrigger>
+              <div className={`themed-switch-container ${isAutoplay ? 'active' : ''}`}>
+                <PlayCircle
+                  className={`h-6 w-6 ${isAutoplay ? 'active' : ''}`}
+                  style={{
+                    color: isAutoplay ? 'var(--synthwave-button-active-icon-color)' : 'var(--text-primary-custom)',
+                  }}
+                />
                 <Switch id="autoplay-switch" checked={isAutoplay} onCheckedChange={setIsAutoplay} />
               </div>
             </TooltipTrigger>
@@ -314,16 +319,16 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleShuffle} className={`synthwave-button relative ${isShuffled ? 'active' : ''}`}>
-                <Shuffle className="h-4 w-4" />
+              <Button variant="ghost" onClick={toggleShuffle} className={`synthwave-button h-10 w-10 relative ${isShuffled ? 'active' : ''}`}>
+                <Shuffle className="h-5 w-5" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="top"><p>Aleatorio</p></TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleRepeat} className={`synthwave-button relative ${repeatMode !== 'none' ? 'active' : ''}`}>
-                <Repeat className="h-4 w-4" />
+              <Button variant="ghost" onClick={toggleRepeat} className={`synthwave-button h-10 w-10 relative ${repeatMode !== 'none' ? 'active' : ''}`}>
+                <Repeat className="h-5 w-5" />
                 {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
               </Button>
             </TooltipTrigger>
@@ -337,17 +342,17 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
             </TooltipContent>
           </Tooltip>
         </div>
-        <div className="flex items-center gap-2">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleMute} className={`synthwave-button ${isMuted ? 'active' : ''}`}>
-                {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-              </Button>
+            <TooltipTrigger>
+              <div className={`synthwave-button h-10 flex items-center gap-2 ${!isMuted ? 'active' : ''}`}>
+                <button onClick={toggleMute}>
+                  {isMuted || volume === 0 ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+                </button>
+                <Slider value={[isMuted ? 0 : volume]} max={1} step={0.01} onValueChange={handleVolumeChange} className={`w-20 transition-opacity duration-300 ${isMuted ? 'opacity-50' : ''}`} />
+              </div>
             </TooltipTrigger>
             <TooltipContent side="top"><p>{isMuted ? 'Quitar silencio' : 'Silenciar'}</p></TooltipContent>
           </Tooltip>
-          <Slider value={[isMuted ? 0 : volume]} max={1} step={0.01} onValueChange={handleVolumeChange} className={`w-20 transition-opacity duration-300 ${isMuted ? 'opacity-50' : ''}`} />
-        </div>
       </div>
     </Card>
   );

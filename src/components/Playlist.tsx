@@ -149,7 +149,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
               key={song.id}
               className={`
                 flex items-center gap-3 p-3 rounded-lg transition-all duration-300 playlist-item
-                ${isActive ? 'cursor-pointer themed-card interactive-card' : ''}
+                ${isActive ? 'cursor-pointer interactive-card' : ''}
                 ${currentSongId === song.id && isActive ? 'playlist-item-active' : ''}
               `}
               style={{

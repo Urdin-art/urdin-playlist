@@ -270,12 +270,20 @@ const Index = () => {
 
       {/* Lyrics Display */}
       {currentSong && (
-        <div className={isPlaying ? "crt-glow-animated" : ""} style={{ borderRadius: 'var(--lyricsCard-borderRadius)' }}>
+        <div className={`relative ${isPlaying ? "crt-glow-animated" : ""}`} style={{ borderRadius: 'var(--lyricsCard-borderRadius)' }}>
           <LyricsDisplay
             lyricsFile={currentSong?.lyricsFile}
             currentTime={currentTime}
             isPlaying={isPlaying}
           />
+          {/* Glass Effect Overlay */}
+          <div
+            className="absolute inset-2 pointer-events-none"
+            style={{
+              borderRadius: 'var(--lyricsCard-borderRadius)',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 25%), linear-gradient(315deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 15%)',
+            }}
+          ></div>
         </div>
       )}
 

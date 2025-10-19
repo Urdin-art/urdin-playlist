@@ -344,7 +344,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
         </div>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className={`synthwave-button h-10 flex items-center gap-2 ${!isMuted ? 'active' : ''}`}>
+              <div className={`themed-switch-container h-10 flex items-center gap-2 ${!isMuted ? 'active' : ''}`}>
                 <div onClick={toggleMute} className="cursor-pointer">
                   {isMuted || volume === 0 ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
                 </div>

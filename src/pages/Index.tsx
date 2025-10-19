@@ -223,10 +223,10 @@ const Index = () => {
           </h1>
         </div>
         <div className="flex items-center justify-center gap-2">
-          {config?.tagline && <p className="text-primary-custom">{processTagline(config.tagline)}</p>}
+          {config?.tagline && <p className="text-dimmed">{processTagline(config.tagline)}</p>}
           {config?.tagline_html && (
             <p
-              className="text-primary-custom"
+              className="text-dimmed"
               dangerouslySetInnerHTML={{ __html: processTagline(config.tagline_html) }}
             />
           )}
@@ -326,7 +326,7 @@ const Index = () => {
 
       {/* Footer */}
       <div className="text-center text-dimmed text-sm">
-        <p className="gradient-text-secondary"><a href="/?config=X-side" className="gradient-text-secondary">🎵</a> _UrDiN.art_ Music Player • Hecho con Inteligencia Natural, y un poco de la Artificial <a href="/?config=X-side" className="gradient-text-secondary">🎵</a></p>
+        <p className="text-dimmed"><a href="/?config=X-side" className="text-dimmed">🎵</a> _UrDiN.art_ Music Player • Hecho con Inteligencia Natural, y un poco de la Artificial <a href="/?config=X-side" className="text-dimmed">🎵</a></p>
         <p className="mt-2">
           <a 
             href="#" 

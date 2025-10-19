@@ -151,7 +151,11 @@
         },
         "menu": {
             "textColor": "hsla(258, 88%, 16%, 1.00)",
-            "buttonGradientColor": "hsla(276, 97%, 85%, 1.00)"
+            "buttonGradientColor": "hsla(276, 97%, 85%, 0.71)",
+            "gradientBottomColor": "rgba(112, 97, 107, 0.73)",
+            "borderColor": "rgba(0, 0, 0, 1.00)",
+            "borderWidth": "1px",
+            "borderRadius": "0.5rem"
         }
     }
 }

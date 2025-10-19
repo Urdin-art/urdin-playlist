@@ -99,6 +99,10 @@ export const useAppConfig = (defaultConfig = 'A-side') => {
     if (c.menu) {
       root.style.setProperty('--menu-text-color', c.menu.textColor);
       root.style.setProperty('--menu-button-gradient-color', c.menu.buttonGradientColor);
+      root.style.setProperty('--menu-gradient-bottom-color', c.menu.gradientBottomColor);
+      root.style.setProperty('--menu-border-color', c.menu.borderColor);
+      root.style.setProperty('--menu-border-width', c.menu.borderWidth);
+      root.style.setProperty('--menu-border-radius', c.menu.borderRadius);
     }
 
     // PATTERN #2: Specific gradient variables for each card type

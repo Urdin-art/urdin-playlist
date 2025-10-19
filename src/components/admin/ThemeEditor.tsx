@@ -307,7 +307,11 @@ export function ThemeEditor({ themeName, isOpen, onOpenChange, onThemeSaved }: {
                     <h4 className="text-md font-semibold mb-2">Menú de Navegación</h4>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {renderFormField("menu.textColor", "Color Texto/Icono")}
-                      {renderFormField("menu.buttonGradientColor", "Color Botón")}
+                      {renderFormField("menu.buttonGradientColor", "Color Superior Gradiente")}
+                      {renderFormField("menu.gradientBottomColor", "Color Inferior Gradiente")}
+                      {renderFormField("menu.borderColor", "Color Borde")}
+                      {renderFormField("menu.borderWidth", "Ancho Borde")}
+                      {renderFormField("menu.borderRadius", "Radio Borde")}
                     </div>
                   </div>
 

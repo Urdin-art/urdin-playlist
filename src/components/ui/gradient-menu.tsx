@@ -85,16 +85,24 @@ export default function GradientMenu() {
           {menuItems.map(({ title, icon, gradientFrom, gradientTo, action }, idx) => (
             <li
               key={idx}
-              style={{ 
-                '--gradient-from': gradientFrom, 
-                '--gradient-to': gradientTo,
-                background: 'linear-gradient(to bottom, var(--menu-button-gradient-color), rgba(0, 0, 0, 0.85))'
-              }}
-              className="relative w-[1.875rem] h-[1.875rem] md:w-[2.8125rem] md:h-[2.8125rem] shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[5.625rem] md:hover:w-[8.4375rem] hover:shadow-none group cursor-pointer"
+                            style={{
+                              '--gradient-from': gradientFrom, 
+                              '--gradient-to': gradientTo,
+                              background: 'linear-gradient(to bottom, var(--menu-button-gradient-color), var(--menu-gradient-bottom-color))',
+                              borderColor: 'var(--menu-border-color)',
+                              borderWidth: 'var(--menu-border-width)',
+                              borderRadius: 'var(--menu-border-radius)',
+                              borderStyle: 'solid',
+                            }}              className="relative w-[1.875rem] h-[1.875rem] md:w-[2.8125rem] md:h-[2.8125rem] shadow-lg rounded-full flex items-center justify-center transition-all duration-500 hover:w-[5.625rem] md:hover:w-[8.4375rem] hover:shadow-none group cursor-pointer"
               onClick={action}
             >
               {/* Gradient background on hover */}
-              <span className="absolute inset-0 rounded-full bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))] opacity-0 transition-all duration-500 group-hover:opacity-100"></span>
+              <span
+                className="absolute inset-0 rounded-full bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))] opacity-0 transition-all duration-500 group-hover:opacity-100"
+                style={{
+                  borderRadius: 'var(--menu-border-radius)',
+                }}
+              ></span>
               {/* Blur glow */}
               <span className="absolute top-[10px] inset-x-0 h-full rounded-full bg-[linear-gradient(45deg,var(--gradient-from),var(--gradient-to))] blur-[15px] opacity-0 -z-10 transition-all duration-500 group-hover:opacity-50"></span>
 

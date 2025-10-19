@@ -178,7 +178,7 @@ const Index = () => {
     <>
       <GradientMenu />
       <div className="min-h-screen space-y-12 lg:space-y-[4.5rem] pb-4 px-6 sm:px-12 lg:px-[4.5rem]">
-        <div className="h-4" />
+        <div className="h-8" />
 
       {/* PWA Install Banner */}
       {showInstallBanner && !isAppInstalled && (

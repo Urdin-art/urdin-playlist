@@ -304,7 +304,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <div className={`themed-switch-container ${isAutoplay ? 'active' : ''}`}>
                 <PlayCircle
                   className={`h-6 w-6 ${isAutoplay ? 'active' : ''}`}
@@ -343,11 +343,11 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
         </div>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <div className={`synthwave-button h-10 flex items-center gap-2 ${!isMuted ? 'active' : ''}`}>
-                <button onClick={toggleMute}>
+                <div onClick={toggleMute} className="cursor-pointer">
                   {isMuted || volume === 0 ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                </button>
+                </div>
                 <Slider value={[isMuted ? 0 : volume]} max={1} step={0.01} onValueChange={handleVolumeChange} className={`w-20 transition-opacity duration-300 ${isMuted ? 'opacity-50' : ''}`} />
               </div>
             </TooltipTrigger>

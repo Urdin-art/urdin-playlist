@@ -294,11 +294,11 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       </div>
 
       <div className="flex items-center justify-center gap-4 mb-4">
-        <Button onClick={handlePrevious} className="synthwave-button h-10 w-10"><SkipBack className="h-5 w-5" /></Button>
-        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button h-[3.5rem] w-[3.5rem] ${isPlaying ? 'active' : ''}`} disabled={isBuffering}>
-          {isBuffering ? <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause className="h-[2.8rem] w-[2.8rem]" /> : <Play className="h-[2.8rem] w-[2.8rem]" />}
+        <Button onClick={handlePrevious} className="synthwave-button h-14 w-14"><SkipBack style={{ height: '1.5rem', width: '1.5rem' }} /></Button>
+        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button h-[4.5rem] w-[4.5rem] ${isPlaying ? 'active' : ''}`} disabled={isBuffering}>
+          {isBuffering ? <div className="w-12 h-12 border-4 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause style={{ height: '2.5rem', width: '2.5rem' }} /> : <Play style={{ height: '2.5rem', width: '2.5rem' }} />}
         </Button>
-        <Button onClick={handleNext} className="synthwave-button h-10 w-10"><SkipForward className="h-5 w-5" /></Button>
+        <Button onClick={handleNext} className="synthwave-button h-14 w-14"><SkipForward style={{ height: '1.5rem', width: '1.5rem' }} /></Button>
       </div>
 
       <div className="flex items-center justify-between">
@@ -329,7 +329,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
             <TooltipTrigger asChild>
               <Button variant="ghost" onClick={toggleRepeat} className={`synthwave-button h-10 w-10 relative ${repeatMode !== 'none' ? 'active' : ''}`}>
                 <Repeat className="h-5 w-5" />
-                {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
+                {repeatMode === 'one' && <span className="text-xs absolute top-1 right-1 font-bold">1</span>}
               </Button>
             </TooltipTrigger>
             <TooltipContent side="top">

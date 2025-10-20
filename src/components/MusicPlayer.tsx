@@ -255,11 +255,11 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
   if (!currentSong) return null;
 
   return (
-    <Card className="p-10 h-full flex flex-col justify-between relative bg-transparent border-none shadow-none">
+    <Card className="glass-effect p-10 h-full flex flex-col justify-between relative border-none">
        <div className="absolute top-4 left-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'active' : ''}`}>
+            <Button variant="ghost" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button-secondary h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'play-button-active' : 'text-dimmed'}`}>
               <Star className={`h-5 w-5 ${personalPlaylist.includes(currentSong.id) ? 'fill-current' : ''}`} />
             </Button>
           </TooltipTrigger>
@@ -269,7 +269,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       <div className="absolute top-4 right-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" onClick={() => downloadSong(currentSong.id)} className="synthwave-button h-10 w-10">
+            <Button variant="ghost" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button-secondary text-dimmed h-10 w-10">
               <Download className="h-5 w-5" />
             </Button>
           </TooltipTrigger>
@@ -280,38 +280,33 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       <audio ref={audioRef} src={currentSong.audioFile} />
       
       <div className="text-center flex-grow flex flex-col justify-center pt-8">
-        <h2 className="text-2xl font-bold mb-1" style={{ color: 'var(--text-player-title)' }}>{currentSong.title}</h2>
-        <p className="text-xl" style={{ color: 'var(--text-player-artist)' }}>{currentSong.artist}</p>
-        <p className="text-lg mb-4" style={{ color: 'var(--text-player-album)' }}>{currentSong.album}</p>
+        <h2 className="text-2xl font-bold mb-1 text-player-title">{currentSong.title}</h2>
+        <p className="text-xl text-player-artist">{currentSong.artist}</p>
+        <p className="text-lg text-player-album mb-4">{currentSong.album}</p>
       </div>
 
       <div className="mt-auto mb-6">
         <Slider value={[currentTime]} max={duration || 100} step={1} onValueChange={handleSeek} className="w-full" />
-        <div className="flex justify-between text-sm mt-1" style={{ color: 'var(--text-player-timestamp)' }}>
+        <div className="flex justify-between text-sm text-player-timestamp mt-1">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
 
       <div className="flex items-center justify-center gap-4 mb-4">
-        <Button onClick={handlePrevious} className="synthwave-button h-14 w-14"><SkipBack style={{ height: '1.5rem', width: '1.5rem' }} /></Button>
-        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button h-[4.5rem] w-[4.5rem] ${isPlaying ? 'active' : ''}`} disabled={isBuffering}>
-          {isBuffering ? <div className="w-12 h-12 border-4 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause style={{ height: '2.5rem', width: '2.5rem' }} /> : <Play style={{ height: '2.5rem', width: '2.5rem' }} />}
+        <Button variant="ghost" size="icon" onClick={handlePrevious} className="synthwave-button-gradient"><SkipBack className="h-4 w-4" /></Button>
+        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button-gradient h-16 w-16 ${isPlaying ? 'play-button-active' : ''}`} disabled={isBuffering}>
+          {isBuffering ? <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
         </Button>
-        <Button onClick={handleNext} className="synthwave-button h-14 w-14"><SkipForward style={{ height: '1.5rem', width: '1.5rem' }} /></Button>
+        <Button variant="ghost" size="icon" onClick={handleNext} className="synthwave-button-gradient"><SkipForward className="h-4 w-4" /></Button>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className={`themed-switch-container ${isAutoplay ? 'active' : ''}`}>
-                <PlayCircle
-                  className={`h-6 w-6 ${isAutoplay ? 'active' : ''}`}
-                  style={{
-                    color: isAutoplay ? 'var(--synthwave-button-active-icon-color)' : 'var(--text-primary-custom)',
-                  }}
-                />
+              <div className="glass-effect p-2 opacity-80 hover:opacity-100 transition-all duration-300 shadow-lg hover-glow rounded-lg flex items-center gap-2 border-none">
+                <PlayCircle className={`h-4 w-4 text-player-timestamp ${isAutoplay ? '' : 'opacity-50'}`} />
                 <Switch id="autoplay-switch" checked={isAutoplay} onCheckedChange={setIsAutoplay} />
               </div>
             </TooltipTrigger>
@@ -319,17 +314,17 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" onClick={toggleShuffle} className={`synthwave-button h-10 w-10 relative ${isShuffled ? 'active' : ''}`}>
-                <Shuffle className="h-5 w-5" />
+              <Button variant="ghost" size="icon" onClick={toggleShuffle} className={`relative synthwave-button-secondary ${isShuffled ? 'play-button-active' : 'text-dimmed'}`}>
+                <Shuffle className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
             <TooltipContent side="top"><p>Aleatorio</p></TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" onClick={toggleRepeat} className={`synthwave-button h-10 w-10 relative ${repeatMode !== 'none' ? 'active' : ''}`}>
-                <Repeat className="h-5 w-5" />
-                {repeatMode === 'one' && <span className="text-xs absolute top-1 right-1 font-bold">1</span>}
+              <Button variant="ghost" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-secondary ${repeatMode !== 'none' ? 'play-button-active' : 'text-dimmed'}`}>
+                <Repeat className="h-4 w-4" />
+                {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
               </Button>
             </TooltipTrigger>
             <TooltipContent side="top">
@@ -342,17 +337,17 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
             </TooltipContent>
           </Tooltip>
         </div>
+        <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className={`themed-switch-container h-10 flex items-center gap-2 ${!isMuted ? 'active' : ''}`}>
-                <div onClick={toggleMute} className="cursor-pointer">
-                  {isMuted || volume === 0 ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                </div>
-                <Slider value={[isMuted ? 0 : volume]} max={1} step={0.01} onValueChange={handleVolumeChange} className={`w-20 transition-opacity duration-300 ${isMuted ? 'opacity-50' : ''}`} />
-              </div>
+              <Button variant="ghost" size="icon" onClick={toggleMute} className={`synthwave-button-secondary text-player-timestamp ${isMuted ? 'play-button-active' : ''}`}>
+                {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              </Button>
             </TooltipTrigger>
             <TooltipContent side="top"><p>{isMuted ? 'Quitar silencio' : 'Silenciar'}</p></TooltipContent>
           </Tooltip>
+          <Slider value={[isMuted ? 0 : volume]} max={1} step={0.01} onValueChange={handleVolumeChange} className={`w-20 transition-opacity duration-300 ${isMuted ? 'opacity-50' : ''}`} />
+        </div>
       </div>
     </Card>
   );

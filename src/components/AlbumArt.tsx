@@ -95,10 +95,11 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
             <div 
               className="themed-button absolute top-2 right-2 pointer-events-none"
               style={{
-                textShadow: `0 0 5px var(--buttons-active-glowColor)`
+                textShadow: `0 0 5px var(--buttons-active-glowColor)`,
+                fontSize: '1.6rem'
               }}
             >
-              ✨ NEW
+              🔥NEW
             </div>
           )}
           
@@ -121,15 +122,7 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
                                     />
                                   </div>              </div>
               </TooltipTrigger>
-              <TooltipContent 
-                className="z-50 rounded-lg p-2"
-                style={{
-                    background: `linear-gradient(135deg, var(--navigation-backgroundGradient-from), var(--navigation-backgroundGradient-to))`,
-                    borderColor: 'var(--navigation-borderColor)',
-                    borderWidth: 'var(--navigation-borderWidth)',
-                    color: 'var(--navigation-textColor)'
-                }}
-              >
+              <TooltipContent side="top">
                 <p className="font-semibold">Animaciones</p>
                 <p className="text-xs mt-1">
                   {animationsEnabled ? 'Imágenes animadas' : 'Imágenes estáticas'}

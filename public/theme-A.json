@@ -10,34 +10,34 @@
         "buttons": {
             "inactive": {
                 "backgroundGradient": {
-                    "from": "hsla(237, 100%, 74%, 1.00)",
-                    "to": "hsla(308, 86%, 83%, 1.00)"
+                    "from": "hsla(237, 46%, 47%, 1.00)",
+                    "to": "hsla(308, 50%, 52%, 1.00)"
                 },
-                "borderColor": "hsla(331, 100%, 10%, 1.00)",
+                "borderColor": "hsla(0, 100%, 50%, 1.00)",
                 "iconColor": "hsla(256, 100%, 11%, 1.00)",
-                "glowColor": "hsla(198, 100%, 50%, 1.00)"
+                "glowColor": "hsla(238, 100%, 50%, 1.00)"
             },
             "hover": {
                 "backgroundGradient": {
-                    "from": "hsla(236, 100%, 88%, 1.00)",
-                    "to": "hsla(296, 100%, 85%, 1.00)"
+                    "from": "hsla(342, 99%, 58%, 1.00)",
+                    "to": "hsla(44, 100%, 52%, 1.00)"
                 },
-                "borderColor": "hsla(240, 31%, 14%, 1.00)",
-                "iconColor": "hsla(0, 0%, 16%, 1.00)",
-                "glowColor": "hsla(41, 99%, 62%, 1.00)"
+                "borderColor": "hsla(119, 100%, 50%, 0.74)",
+                "iconColor": "hsla(238, 100%, 39%, 1.00)",
+                "glowColor": "hsla(121, 100%, 50%, 0.82)"
             },
             "active": {
                 "backgroundGradient": {
-                    "from": "hsla(157, 100%, 50%, 1.00)",
+                    "from": "hsla(127, 100%, 50%, 1.00)",
                     "to": "hsla(236, 100%, 45%, 1.00)"
                 },
-                "borderColor": "hsla(0, 0%, 100%, 1.00)",
+                "borderColor": "hsla(55, 100%, 50%, 1.00)",
                 "iconColor": "hsla(0, 0%, 0%, 1.00)",
-                "glowColor": "hsla(334, 100%, 50%, 1.00)"
+                "glowColor": "hsla(334, 100%, 50%, 0.83)"
             },
             "glowSize": "30px",
-            "borderRadius": "2rem",
-            "borderWidth": "1px"
+            "borderRadius": "0rem",
+            "borderWidth": "5px"
         },
         "backgrounds": {
             "page": {
@@ -59,14 +59,14 @@
                 "angle": "0"
             },
             "playlistCard": {
-                "from": "hsla(264, 29%, 38%, 1.00)",
-                "to": "hsla(0, 42%, 44%, 1.00)",
+                "from": "hsla(264, 100%, 11%, 1.00)",
+                "to": "hsla(322, 97%, 13%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
             "exclusionsCard": {
-                "from": "hsla(0, 24%, 28%, 1.00)",
-                "to": "hsla(268, 27%, 20%, 1.00)",
+                "from": "hsla(0, 23%, 16%, 1.00)",
+                "to": "hsla(270, 25%, 11%, 1.00)",
                 "type": "linear",
                 "angle": 135
             }
@@ -96,33 +96,33 @@
             "textDimmed": "hsla(130, 62%, 38%, 1.00)",
             "glowColor": "hsla(119, 100%, 50%, 0.49)",
             "glowSize": "50px",
-            "borderColor": "hsla(127, 100%, 7%, 1.00)",
+            "borderColor": "hsla(0, 0%, 0%, 0.74)",
             "borderWidth": "5px",
-            "borderRadius": "5rem"
+            "borderRadius": "3.5rem"
         },
         "borders": {
             "albumArtCard": {
-                "color": "hsla(0, 0%, 0%, 1.00)",
+                "color": "hsla(0, 99%, 49%, 1.00)",
                 "width": "3px",
                 "radius": "1rem"
             },
             "playerCard": {
-                "color": "hsla(0, 0%, 0%, 1.00)",
+                "color": "hsla(0, 99%, 49%, 1.00)",
                 "width": "3px",
                 "radius": "1rem"
             },
             "playlistCard": {
-                "color": "hsla(0, 0%, 0%, 1.00)",
+                "color": "hsla(0, 100%, 50%, 1.00)",
                 "width": "3px",
                 "radius": "1rem"
             },
             "playlistItem": {
-                "color": "hsla(0, 0%, 0%, 1.00)",
+                "color": "hsla(0, 100%, 49%, 0.75)",
                 "width": "1px",
                 "radius": "0.5rem"
             },
             "exclusionsCard": {
-                "color": "hsla(0, 0%, 0%, 1.00)",
+                "color": "hsla(0, 100%, 50%, 1.00)",
                 "width": "3px",
                 "radius": "1rem"
             }

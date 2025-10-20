@@ -270,20 +270,38 @@ const Index = () => {
 
       {/* Lyrics Display */}
       {currentSong && (
-        <div className={`relative ${isPlaying ? "crt-glow-animated" : ""}`} style={{ borderRadius: 'var(--lyricsCard-borderRadius)' }}>
-          <LyricsDisplay
-            lyricsFile={currentSong?.lyricsFile}
-            currentTime={currentTime}
-            isPlaying={isPlaying}
-          />
-          {/* Glass Effect Overlay */}
-          <div
-            className="absolute inset-2 pointer-events-none"
+        <div className="relative">
+          {/* Static Glow */}
+          <div 
+            className="absolute inset-0"
             style={{
               borderRadius: 'var(--lyricsCard-borderRadius)',
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 25%), linear-gradient(315deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 15%)',
+              boxShadow: `0 0 var(--lyricsCard-glowSize, 0px) var(--lyricsCard-glowColor, transparent)`
             }}
-          ></div>
+          />
+          {/* Animated Glow */}
+          <div 
+            className={`absolute inset-0 ${isPlaying ? "crt-glow-animated" : ""}`}
+            style={{
+              borderRadius: 'var(--lyricsCard-borderRadius)',
+            }}
+          />
+          {/* Content */}
+          <div className="relative" style={{ borderRadius: 'var(--lyricsCard-borderRadius)', overflow: 'hidden' }}>
+            <LyricsDisplay
+              lyricsFile={currentSong?.lyricsFile}
+              currentTime={currentTime}
+              isPlaying={isPlaying}
+            />
+            {/* Glass Effect Overlay */}
+            <div
+              className="absolute inset-2 pointer-events-none"
+              style={{
+                borderRadius: 'var(--lyricsCard-borderRadius)',
+                background: 'linear-gradient(155deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 12.5%), linear-gradient(335deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 7.5%)',
+              }}
+            ></div>
+          </div>
         </div>
       )}
 

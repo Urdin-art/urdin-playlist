@@ -141,12 +141,11 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
   if (!lyricsFile || lyrics.length === 0) {
     return (
       <Card 
-        className="h-32 flex items-center justify-center"
+        className="h-32 flex items-center justify-center border-none"
         style={{
           backgroundColor: 'var(--lyricsCard-background)',
           border: `var(--lyricsCard-borderWidth, 2px) solid var(--lyricsCard-borderColor, #fff)`,
-          borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)',
-          boxShadow: `0 0 var(--lyricsCard-glowSize, 0px) var(--lyricsCard-glowColor, transparent)`
+          borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)'
         }}
       >
         <div className="text-center" style={{ color: 'var(--lyricsCard-textDimmed)' }}>
@@ -159,12 +158,11 @@ export const LyricsDisplay: React.FC<LyricsDisplayProps> = ({
 
   return (
     <Card 
-      className="relative overflow-hidden h-32 flex flex-col justify-center"
+      className="relative overflow-hidden h-32 flex flex-col justify-center border-none"
       style={{
         backgroundColor: 'var(--lyricsCard-background)',
         border: `var(--lyricsCard-borderWidth, 2px) solid var(--lyricsCard-borderColor, #fff)`,
-        borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)',
-        boxShadow: `0 0 var(--lyricsCard-glowSize, 0px) var(--lyricsCard-glowColor, transparent)`
+        borderRadius: 'var(--lyricsCard-borderRadius, 1.5rem)'
       }}
     >
       <div className="text-center transition-all duration-300 p-4 z-10">

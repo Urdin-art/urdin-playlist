@@ -17,7 +17,20 @@
 }
 
 @layer components {
+  .glass-effect {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--primary-h), 30%, 30%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--neon-primary);
+    transform: translateY(-2px);
+  }
   .theme-album-art-card {
+    overflow: hidden;
     background: var(--albumArtCard-gradient);
     border: var(--albumArtCard-border-width) solid var(--albumArtCard-border-color);
     border-radius: var(--albumArtCard-border-radius);
@@ -25,6 +38,7 @@
   }
 
   .theme-player-card {
+    overflow: hidden;
     background: var(--playerCard-gradient);
     border: var(--playerCard-border-width) solid var(--playerCard-border-color);
     border-radius: var(--playerCard-border-radius);
@@ -32,6 +46,7 @@
   }
 
   .theme-playlist-card {
+    overflow: hidden;
     background: var(--playlistCard-gradient);
     border: var(--playlistCard-border-width) solid var(--playlistCard-border-color);
     border-radius: var(--playlistCard-border-radius);
@@ -39,6 +54,7 @@
   }
 
   .theme-exclusions-card {
+    overflow: hidden;
     background: var(--exclusionsCard-gradient);
     border: var(--exclusionsCard-border-width) solid var(--exclusionsCard-border-color);
     border-radius: var(--exclusionsCard-border-radius);
@@ -76,6 +92,63 @@
     border-color: var(--button-active-border-color);
     box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-active);
   }
+
+  .synthwave-button-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary-h), 30%, 15%), hsl(var(--accent-h), 20%, 10%));
+    color: var(--text-secondary-custom);
+    border-width: var(--button-border-width);
+    border-style: solid;
+    border-color: var(--button-inactive-border-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px hsl(var(--secondary-h), 40%, 25%, 0.5);
+    font-size: 1.1rem;
+  }
+  
+  .synthwave-button-secondary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, hsl(var(--secondary-h), 60%, 40%), hsl(var(--primary-h), 70%, 50%));
+    color: hsl(var(--secondary-h), 20%, 95%);
+    border-color: var(--button-hover-border-color);
+    box-shadow: var(--neon-secondary), 0 0 30px hsl(var(--secondary-h), 60%, 40%);
+  }
+
+  .synthwave-button-gradient {
+    background: var(--button-inactive-bg-gradient);
+    color: var(--text-highlighted);
+    border-width: var(--button-border-width);
+    border-style: solid;
+    border-color: var(--button-inactive-border-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px hsl(var(--primary-h), 50%, 30%, 0.5), 0 0 20px hsl(var(--secondary-h), 40%, 25%, 0.3);
+    font-size: 1.1rem;
+  }
+  
+  .synthwave-button-gradient:hover {
+    transform: translateY(-2px);
+    background: var(--button-hover-bg-gradient);
+    color: var(--synthwave-button-hover-icon-color);
+    border-color: var(--button-hover-border-color);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-hover);
+  }
+
+  .play-button-active {
+    transform: translateY(-2px);
+    background: var(--button-active-bg-gradient);
+    color: var(--synthwave-button-active-icon-color);
+    border-color: var(--button-active-border-color);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-active);
+  }
+
 
   .DropdownMenuContent {
     background: var(--navigation-gradient) !important;
@@ -136,22 +209,27 @@
   }
 
   .themed-slider-thumb {
-    background-color: var(--switch-thumb-background) !important;
-    border-width: 2px !important;
-    border-style: solid !important;
-    border-color: var(--button-inactive-border-color) !important;
-  }
-  .themed-slider-thumb:hover {
-    background-color: var(--switch-thumb-background-checked) !important;
-    border-color: var(--button-active-border-color) !important;
+    background: var(--button-hover-bg-gradient);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-hover);
+    border: 1px solid var(--button-hover-border-color);
   }
 
   .themed-switch-thumb {
-    background-color: var(--switch-thumb-background) !important;
+    background: var(--button-hover-bg-gradient) !important;
   }
-  .themed-switch-thumb[data-state="checked"] {
-    background-color: var(--switch-thumb-background-checked) !important;
+
+  .themed-slider-track {
+    background-image: var(--button-inactive-bg-gradient);
+    border-width: var(--button-border-width);
+    border-style: solid;
+    border-color: var(--button-inactive-border-color);
   }
+
+  .themed-slider-range {
+    background-image: var(--button-active-bg-gradient);
+  }
+
+
 
   .text-primary-custom {
     color: var(--text-primary-custom);
@@ -314,5 +392,21 @@
 
   .themed-switch-container.active .h-6.w-6 {
     color: var(--synthwave-button-active-icon-color);
+  }
+
+  .text-player-title {
+    color: var(--text-player-title);
+  }
+
+  .text-player-artist {
+    color: var(--text-player-artist);
+  }
+
+  .text-player-album {
+    color: var(--text-player-album);
+  }
+
+  .text-player-timestamp {
+    color: var(--text-player-timestamp);
   }
 }

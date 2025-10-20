@@ -6,9 +6,10 @@ interface LyricsModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
   lyricsFile: string | undefined;
+  songTitle: string;
 }
 
-export const LyricsModal: React.FC<LyricsModalProps> = ({ isOpen, onOpenChange, lyricsFile }) => {
+export const LyricsModal: React.FC<LyricsModalProps> = ({ isOpen, onOpenChange, lyricsFile, songTitle }) => {
   const [lyrics, setLyrics] = useState<string>('');
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export const LyricsModal: React.FC<LyricsModalProps> = ({ isOpen, onOpenChange, 
         }}
       >
         <DialogHeader>
-          <DialogTitle className="text-center text-lg" style={{ color: 'var(--navigation-hoverTextColor)' }}>Letra</DialogTitle>
+          <DialogTitle className="text-center text-lg" style={{ color: 'var(--navigation-hoverTextColor)' }}>{songTitle}</DialogTitle>
         </DialogHeader>
         <div className="max-h-96 overflow-y-auto" style={{ whiteSpace: 'pre-wrap' }}>
           {lyrics}

@@ -84,26 +84,14 @@ const DropdownMenuItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean
   }
->(({ className, inset, style, ...props }, ref) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-
-  const combinedStyle: React.CSSProperties = {
-    ...style,
-    color: isHovered ? 'var(--accent-foreground)' : 'var(--popover-foreground)',
-    border: '1px solid',
-    borderColor: isHovered ? 'var(--navigation-hoverMenuColor)' : 'transparent',
-    transition: 'color 0.2s, border-color 0.2s',
-    borderRadius: 'var(--nav-border-radius)',
-  };
-
+>(({ className, inset, ...props }, ref) => {
   return (
     <DropdownMenuPrimitive.Item
       ref={ref}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={combinedStyle}
       className={cn(
-        "relative flex cursor-pointer select-none items-center px-2 py-1.5 text-sm outline-none hover:bg-accent focus:bg-accent data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "synthwave-button-gradient",
+        "relative flex cursor-pointer select-none items-center text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "py-1.5 px-2",
         inset && "pl-8",
         className
       )}

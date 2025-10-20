@@ -10,39 +10,39 @@
         "buttons": {
             "inactive": {
                 "backgroundGradient": {
-                    "from": "hsla(237, 46%, 47%, 1.00)",
-                    "to": "hsla(308, 50%, 52%, 1.00)"
+                    "from": "hsla(237, 100%, 50%, 1.00)",
+                    "to": "hsla(325, 100%, 50%, 1.00)"
                 },
-                "borderColor": "hsla(0, 100%, 50%, 1.00)",
+                "borderColor": "hsla(0, 0%, 0%, 0.73)",
                 "iconColor": "hsla(256, 100%, 11%, 1.00)",
-                "glowColor": "hsla(238, 100%, 50%, 1.00)"
+                "glowColor": "hsla(35, 100%, 50%, 0.48)"
             },
             "hover": {
                 "backgroundGradient": {
-                    "from": "hsla(342, 99%, 58%, 1.00)",
-                    "to": "hsla(44, 100%, 52%, 1.00)"
+                    "from": "hsla(342, 100%, 50%, 1.00)",
+                    "to": "hsla(35, 100%, 52%, 1.00)"
                 },
-                "borderColor": "hsla(119, 100%, 50%, 0.74)",
+                "borderColor": "hsla(0, 0%, 0%, 0.74)",
                 "iconColor": "hsla(238, 100%, 39%, 1.00)",
-                "glowColor": "hsla(121, 100%, 50%, 0.82)"
+                "glowColor": "hsla(121, 100%, 50%, 0.48)"
             },
             "active": {
                 "backgroundGradient": {
                     "from": "hsla(127, 100%, 50%, 1.00)",
-                    "to": "hsla(236, 100%, 45%, 1.00)"
+                    "to": "hsla(228, 100%, 50%, 1.00)"
                 },
-                "borderColor": "hsla(55, 100%, 50%, 1.00)",
+                "borderColor": "hsla(0, 0%, 0%, 0.75)",
                 "iconColor": "hsla(0, 0%, 0%, 1.00)",
-                "glowColor": "hsla(334, 100%, 50%, 0.83)"
+                "glowColor": "hsla(322, 100%, 50%, 0.47)"
             },
-            "glowSize": "30px",
-            "borderRadius": "0rem",
-            "borderWidth": "5px"
+            "glowSize": "20px",
+            "borderRadius": "2rem",
+            "borderWidth": "2px"
         },
         "backgrounds": {
             "page": {
-                "from": "hsla(241, 97%, 13%, 1.00)",
-                "to": "hsla(308, 100%, 16%, 1.00)",
+                "from": "hsla(241, 100%, 19%, 1.00)",
+                "to": "hsla(328, 100%, 34%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
@@ -53,109 +53,109 @@
                 "angle": 135
             },
             "playerCard": {
-                "from": "hsla(328, 100%, 12%, 1.00)",
-                "to": "hsla(258, 100%, 10%, 1.00)",
+                "from": "hsla(325, 100%, 23%, 1.00)",
+                "to": "hsla(258, 100%, 14%, 1.00)",
                 "type": "linear",
-                "angle": "0"
+                "angle": "135"
             },
             "playlistCard": {
-                "from": "hsla(264, 100%, 11%, 1.00)",
-                "to": "hsla(322, 97%, 13%, 1.00)",
+                "from": "hsla(190, 100%, 11%, 1.00)",
+                "to": "hsla(293, 97%, 13%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
             "exclusionsCard": {
-                "from": "hsla(0, 23%, 16%, 1.00)",
-                "to": "hsla(270, 25%, 11%, 1.00)",
+                "from": "hsla(0, 100%, 14%, 1.00)",
+                "to": "hsla(269, 100%, 8%, 1.00)",
                 "type": "linear",
                 "angle": 135
             }
         },
         "text": {
             "headerFooter": {
-                "normal": "hsla(311, 65%, 64%, 1.00)",
-                "highlighted": "hsla(211, 47%, 69%, 1.00)"
+                "normal": "hsla(29, 98%, 79%, 1.00)",
+                "highlighted": "hsla(211, 100%, 94%, 1.00)"
             },
             "player": {
-                "title": "hsla(237, 45%, 77%, 1.00)",
-                "artist": "hsla(315, 24%, 65%, 1.00)",
-                "album": "hsla(154, 13%, 65%, 1.00)",
-                "timestamp": "hsla(316, 19%, 58%, 1.00)"
+                "title": "hsla(233, 100%, 86%, 1.00)",
+                "artist": "hsla(315, 97%, 87%, 1.00)",
+                "album": "hsla(267, 42%, 73%, 1.00)",
+                "timestamp": "hsla(36, 99%, 69%, 1.00)"
             },
             "playlist": {
-                "title": "hsla(236, 23%, 63%, 1.00)",
-                "titleActive": "hsla(236, 97%, 75%, 1.00)",
-                "secondary": "hsla(315, 30%, 56%, 1.00)",
-                "icons": "hsla(187, 55%, 52%, 1.00)"
+                "title": "hsla(315, 97%, 87%, 1.00)",
+                "titleActive": "hsla(233, 100%, 86%, 1.00)",
+                "secondary": "hsla(267, 42%, 73%, 1.00)",
+                "icons": "hsla(37, 99%, 69%, 1.00)"
             }
         },
         "lyricsCard": {
-            "background": "hsla(129, 100%, 10%, 0.70)",
-            "scanlines": "hsla(119, 100%, 15%, 0.14)",
+            "background": "hsla(129, 100%, 10%, 1.00)",
+            "scanlines": "hsla(119, 100%, 15%, 0.26)",
             "textHighlighted": "hsla(114, 100%, 85%, 1.00)",
             "textDimmed": "hsla(130, 62%, 38%, 1.00)",
-            "glowColor": "hsla(119, 100%, 50%, 0.49)",
-            "glowSize": "50px",
-            "borderColor": "hsla(0, 0%, 0%, 0.74)",
+            "glowColor": "hsla(119, 100%, 50%, 0.61)",
+            "glowSize": "75px",
+            "borderColor": "hsla(0, 0%, 0%, 0.85)",
             "borderWidth": "5px",
             "borderRadius": "3.5rem"
         },
         "borders": {
             "albumArtCard": {
-                "color": "hsla(0, 99%, 49%, 1.00)",
+                "color": "hsla(0, 0%, 0%, 1.00)",
                 "width": "3px",
-                "radius": "1rem"
+                "radius": "2rem"
             },
             "playerCard": {
-                "color": "hsla(0, 99%, 49%, 1.00)",
+                "color": "hsla(0, 0%, 0%, 1.00)",
                 "width": "3px",
-                "radius": "1rem"
+                "radius": "2rem"
             },
             "playlistCard": {
-                "color": "hsla(0, 100%, 50%, 1.00)",
+                "color": "hsla(0, 0%, 0%, 1.00)",
                 "width": "3px",
-                "radius": "1rem"
+                "radius": "2rem"
             },
             "playlistItem": {
-                "color": "hsla(0, 100%, 49%, 0.75)",
-                "width": "1px",
-                "radius": "0.5rem"
+                "color": "hsla(0, 0%, 0%, 0.00)",
+                "width": "0px",
+                "radius": "1rem"
             },
             "exclusionsCard": {
-                "color": "hsla(0, 100%, 50%, 1.00)",
+                "color": "hsla(0, 0%, 0%, 1.00)",
                 "width": "3px",
-                "radius": "1rem"
+                "radius": "2rem"
             }
         },
         "glows": {
             "albumArtCard": {
-                "color": "hsla(176, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(179, 100%, 50%, 1.00)",
+                "size": "75px"
             },
             "playerCard": {
-                "color": "hsla(315, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(319, 100%, 50%, 1.00)",
+                "size": "75px"
             },
             "playlistCard": {
-                "color": "hsla(124, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(214, 100%, 50%, 1.00)",
+                "size": "75px"
             },
             "playlistItem": {
-                "color": "hsla(61, 100%, 50%, 1.00)",
-                "size": "15px"
+                "color": "hsla(200, 100%, 50%, 0.47)",
+                "size": "25px"
             },
             "exclusionsCard": {
-                "color": "hsla(236, 97%, 23%, 1.00)",
-                "size": "25px"
+                "color": "hsla(38, 100%, 33%, 1.00)",
+                "size": "75px"
             }
         },
         "menu": {
-            "textColor": "hsla(258, 88%, 16%, 1.00)",
-            "buttonGradientColor": "hsla(276, 97%, 85%, 0.71)",
-            "gradientBottomColor": "rgba(112, 97, 107, 0.73)",
+            "textColor": "hsla(0, 0%, 0%, 1.00)",
+            "buttonGradientColor": "hsla(236, 100%, 50%, 0.84)",
+            "gradientBottomColor": "rgba(255, 0, 187, 0.85)",
             "borderColor": "rgba(0, 0, 0, 1.00)",
-            "borderWidth": "1px",
-            "borderRadius": "0.5rem"
+            "borderWidth": "2px",
+            "borderRadius": "1rem"
         }
     }
 }

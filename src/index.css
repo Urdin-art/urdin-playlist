@@ -27,7 +27,6 @@
 
   .hover-glow:hover {
     box-shadow: var(--neon-primary);
-    transform: translateY(-2px);
   }
   .theme-album-art-card {
     overflow: hidden;
@@ -67,7 +66,7 @@
     border-width: var(--button-border-width);
     border-style: solid;
     border-color: var(--button-inactive-border-color);
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     border-radius: var(--radius);
     font-weight: bold;
     text-transform: uppercase;
@@ -99,7 +98,7 @@
     border-width: var(--button-border-width);
     border-style: solid;
     border-color: var(--button-inactive-border-color);
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     border-radius: var(--radius);
     font-weight: bold;
     text-transform: uppercase;
@@ -110,7 +109,6 @@
   }
   
   .synthwave-button-secondary:hover {
-    transform: translateY(-2px);
     background: linear-gradient(135deg, hsl(var(--secondary-h), 60%, 40%), hsl(var(--primary-h), 70%, 50%));
     color: hsl(var(--secondary-h), 20%, 95%);
     border-color: var(--button-hover-border-color);
@@ -119,22 +117,21 @@
 
   .synthwave-button-gradient {
     background: var(--button-inactive-bg-gradient);
-    color: var(--text-highlighted);
+    color: var(--text-primary-custom);
     border-width: var(--button-border-width);
     border-style: solid;
     border-color: var(--button-inactive-border-color);
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     border-radius: var(--radius);
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px hsl(var(--primary-h), 50%, 30%, 0.5), 0 0 20px hsl(var(--secondary-h), 40%, 25%, 0.3);
+    box-shadow: 0 0 var(--button-glow-size) var(--button-glow-color-inactive);
     font-size: 1.1rem;
   }
   
   .synthwave-button-gradient:hover {
-    transform: translateY(-2px);
     background: var(--button-hover-bg-gradient);
     color: var(--synthwave-button-hover-icon-color);
     border-color: var(--button-hover-border-color);
@@ -142,7 +139,6 @@
   }
 
   .play-button-active {
-    transform: translateY(-2px);
     background: var(--button-active-bg-gradient);
     color: var(--synthwave-button-active-icon-color);
     border-color: var(--button-active-border-color);
@@ -195,18 +191,10 @@
     box-shadow: 0 0 15px var(--button-glow-color-hover);
   }
 
-  /* Styling for the Switch component */
-  /* Unchecked state track */
-  [role="switch"][data-state="unchecked"] {
-    background-color: hsl(var(--input)) !important;
-    border: 1px solid var(--buttons-inactive-borderColor) !important;
+  .playlist-item-glow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 
-  /* Checked state track */
-  [role="switch"][data-state="checked"] {
-    background-color: hsl(var(--primary)) !important;
-    border: 1px solid var(--buttons-active-borderColor) !important;
-  }
 
   .themed-slider-thumb {
     background: var(--button-hover-bg-gradient);
@@ -214,8 +202,17 @@
     border: 1px solid var(--button-hover-border-color);
   }
 
-  .themed-switch-thumb {
-    background: var(--button-hover-bg-gradient) !important;
+  .themed-switch-thumb-dynamic[data-state="unchecked"] {
+    background: var(--button-inactive-bg-gradient);
+  }
+  .themed-switch-thumb-dynamic[data-state="checked"] {
+    background: var(--button-active-bg-gradient);
+  }
+  .themed-switch-thumb-dynamic[data-state="unchecked"] svg {
+    color: var(--text-primary-custom);
+  }
+  .themed-switch-thumb-dynamic[data-state="checked"] svg {
+    color: var(--synthwave-button-active-icon-color);
   }
 
   .themed-slider-track {

@@ -1,8 +1,7 @@
 {
     "logo": "\/logo.png",
-    "tagline": "Escuchando: {CURRENT_SONG_TITLE} - Cara A",
-    "tagline_html": "<a href='https:\/\/www.urdin.art' target='_blank' rel='noopener noreferrer' style='color: hsl(var(--accent));'>Visita mi web<\/a>",
-
+    "tagline": "Mantente al d\u00eda de las novedades y las \u00faltimas versiones",
+    "tagline_html": "<\/br><big><b>\ud83d\udcbf CARA A<\/b><\/big>",
     "playlist": "\/songs-a.json",
     "storage": "retro-beat-player-side-a",
     "use_exclusions": true,

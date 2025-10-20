@@ -222,7 +222,7 @@ const Index = () => {
             🎵
           </h1>
         </div>
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex flex-col items-center justify-center">
           {config?.tagline && <p className="text-dimmed">{processTagline(config.tagline)}</p>}
           {config?.tagline_html && (
             <p

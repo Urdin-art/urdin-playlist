@@ -47,6 +47,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
   const [songToShare, setSongToShare] = React.useState<{ title: string; url: string } | null>(null);
   const [isLyricsModalOpen, setIsLyricsModalOpen] = React.useState(false);
   const [selectedLyricsFile, setSelectedLyricsFile] = React.useState<string | undefined>(undefined);
+  const [selectedSongTitle, setSelectedSongTitle] = React.useState<string>('');
 
   React.useEffect(() => {
     const storedPlaylist = JSON.parse(localStorage.getItem('personal_playlist') || '[]');
@@ -97,9 +98,9 @@ export const Playlist: React.FC<PlaylistProps> = ({
         isOpen={isLyricsModalOpen}
         onOpenChange={setIsLyricsModalOpen}
         lyricsFile={selectedLyricsFile}
+        songTitle={selectedSongTitle}
       />
-      <Card className={`p-4 h-full flex flex-col bg-transparent border-none shadow-none ${!isActive ? 'opacity-60' : ''}`}>
-      <div className="flex justify-between items-center mb-4">
+      <Card className={`p-6 h-full flex flex-col bg-transparent border-none shadow-none ${!isActive ? 'opacity-60' : ''}`} style={{ border: 'none' }}>      <div className="flex justify-between items-center mb-4">
         <h2 className={`text-xl font-bold`}
             style={{ color: 'var(--text-playlist-title)' }}
         >
@@ -125,7 +126,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
         )}
       </div>
       
-      <div className="space-y-2">
+      <div className="space-y-4">
         {songs.length === 0 ? (
           isActive && config?.storage === 'my-side' ? (
             <div className="text-center py-8 px-4" style={{ color: 'var(--text-playlist-secondary)' }}>
@@ -148,11 +149,12 @@ export const Playlist: React.FC<PlaylistProps> = ({
             <div
               key={song.id}
               className={`
-                flex items-center gap-3 p-3 rounded-lg transition-all duration-300 playlist-item
+                flex items-center gap-3 p-3 rounded-lg transition-all duration-300 playlist-item playlist-item-glow
                 ${isActive ? 'cursor-pointer interactive-card' : ''}
                 ${currentSongId === song.id && isActive ? 'playlist-item-active' : ''}
               `}
               style={{
+                background: 'var(--playlistCard-gradient)',
                 borderStyle: 'solid',
                 borderColor: 'var(--borders-playlistItem-color)',
                 borderWidth: 'var(--borders-playlistItem-width)',
@@ -267,22 +269,14 @@ export const Playlist: React.FC<PlaylistProps> = ({
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent 
-                        style={{
-                            background: `linear-gradient(var(--navigation-backgroundGradient-angle, 135deg), var(--navigation-backgroundGradient-from), var(--navigation-backgroundGradient-to))`,
-                            borderColor: 'var(--navigation-borderColor)',
-                            borderWidth: 'var(--navigation-borderWidth)',
-                            color: 'var(--navigation-textColor)',
-                            borderRadius: 'var(--borders-menu-radius)'
-                        }}
-                    >
+                    <DropdownMenuContent>
 
-                      {onMoveToStart && <DropdownMenuItem onClick={() => onMoveToStart(song.id)} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Mover al principio</DropdownMenuItem>}
-                      {onMoveToEnd && <DropdownMenuItem onClick={() => onMoveToEnd(song.id)} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Mover al final</DropdownMenuItem>}
-                      {onDownload && <DropdownMenuItem onClick={() => onDownload(song.id)} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Descargar MP3</DropdownMenuItem>}
-                      <DropdownMenuItem onClick={() => openSongInNewTab(song.id)} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Abrir canción</DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => openShareModal(song)} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Compartir</DropdownMenuItem>
-                      {song.lyricsFile && <DropdownMenuItem onClick={() => { setSelectedLyricsFile(song.lyricsFile); setIsLyricsModalOpen(true); }} style={{ '--hover-color': 'var(--navigation-hoverItemColor)' } as React.CSSProperties}>Ver la letra</DropdownMenuItem>}
+                      {onMoveToStart && <DropdownMenuItem onClick={() => onMoveToStart(song.id)}>Mover al principio</DropdownMenuItem>}
+                      {onMoveToEnd && <DropdownMenuItem onClick={() => onMoveToEnd(song.id)}>Mover al final</DropdownMenuItem>}
+                      {onDownload && <DropdownMenuItem onClick={() => onDownload(song.id)}>Descargar MP3</DropdownMenuItem>}
+                      <DropdownMenuItem onClick={() => openSongInNewTab(song.id)}>Abrir canción</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => openShareModal(song)}>Compartir</DropdownMenuItem>
+                      {song.lyricsFile && <DropdownMenuItem onClick={() => { setSelectedLyricsFile(song.lyricsFile); setSelectedSongTitle(song.title); setIsLyricsModalOpen(true); }}>Ver la letra</DropdownMenuItem>}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

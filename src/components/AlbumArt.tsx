@@ -72,7 +72,7 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
 
   return (
     <TooltipProvider>
-      <Card className="w-full h-full bg-transparent border-none shadow-none">
+      <Card className="w-full h-full bg-transparent border-none shadow-none" style={{ border: 'none' }}>
         <div className="relative w-full h-full overflow-hidden">
           <ImageLoader
             basePath={basePath}
@@ -96,7 +96,8 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
               className="themed-button absolute top-2 right-2 pointer-events-none"
               style={{
                 textShadow: `0 0 5px var(--buttons-active-glowColor)`,
-                fontSize: '1.6rem'
+                fontSize: '1.6rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)'
               }}
             >
               🔥NEW
@@ -104,23 +105,22 @@ export const AlbumArt: React.FC<AlbumArtProps> = ({ song, isPlaying = false, onP
           )}
           
           {/* Animation Switch */}
-          <div className="absolute bottom-2 right-2 flex items-center gap-2 pointer-events-auto z-20">
+          <div className="absolute bottom-4 right-4 pointer-events-auto z-20">
             <Tooltip>
               <TooltipTrigger asChild>
-              <div className="opacity-50 hover:opacity-100 transition-opacity duration-300">
-                                  <div 
-                                    className={`themed-switch-container flex items-center gap-2 cursor-pointer ${animationsEnabled ? 'active' : ''}`}
-                                  >
-                                    {animationsEnabled ? (
-                                      <Video className="h-6 w-6 active" />
-                                    ) : (
-                                      <VideoOff className="h-6 w-6" />
-                                    )}
-                                    <Switch
-                                      checked={animationsEnabled}
-                                      onCheckedChange={setAnimationsEnabled}
-                                    />
-                                  </div>              </div>
+              <div className="h-8 w-14 rounded-full border border-black bg-white/20 opacity-50 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <Switch
+                  className="data-[state=checked]:bg-transparent data-[state=unchecked]:bg-transparent border-none"
+                  checked={animationsEnabled}
+                  onCheckedChange={setAnimationsEnabled}
+                >
+                  {animationsEnabled ? (
+                    <Video className="h-5 w-5" />
+                  ) : (
+                    <VideoOff className="h-5 w-5" />
+                  )}
+                </Switch>
+              </div>
               </TooltipTrigger>
               <TooltipContent side="top">
                 <p className="font-semibold">Animaciones</p>

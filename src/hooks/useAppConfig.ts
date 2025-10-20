@@ -122,6 +122,11 @@ export const useAppConfig = (defaultConfig = 'A-side') => {
       }
     });
 
+    if (c.glows.playlistItem) {
+      root.style.setProperty('--playlistItem-glow-color', c.glows.playlistItem.color);
+      root.style.setProperty('--playlistItem-glow-size', c.glows.playlistItem.size);
+    }
+
     // --- Set variables for Lyrics Card ---
     root.style.setProperty('--lyricsCard-background', c.lyricsCard.background);
     root.style.setProperty('--lyricsCard-borderWidth', c.lyricsCard.borderWidth);

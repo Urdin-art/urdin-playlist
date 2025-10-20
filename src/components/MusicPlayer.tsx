@@ -255,25 +255,25 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
   if (!currentSong) return null;
 
   return (
-    <Card className="glass-effect p-10 h-full flex flex-col justify-between relative border-none">
+    <Card className="glass-effect p-10 h-full flex flex-col justify-between relative border-none" style={{ borderRadius: 'var(--playerCard-border-radius)', border: 'none' }}>
        <div className="absolute top-4 left-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button-secondary h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'play-button-active' : 'text-dimmed'}`}>
+            <Button variant="default" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button-gradient h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'play-button-active' : ''}`}>
               <Star className={`h-5 w-5 ${personalPlaylist.includes(currentSong.id) ? 'fill-current' : ''}`} />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom"><p>{personalPlaylist.includes(currentSong.id) ? 'Eliminar de Mi Lista' : 'Añadir a Mi Lista'}</p></TooltipContent>
+          <TooltipContent side="right"><p>{personalPlaylist.includes(currentSong.id) ? 'Eliminar de Mi Lista' : 'Añadir a Mi Lista'}</p></TooltipContent>
         </Tooltip>
       </div>
       <div className="absolute top-4 right-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="ghost" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button-secondary text-dimmed h-10 w-10">
+            <Button variant="default" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button-gradient h-10 w-10">
               <Download className="h-5 w-5" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom"><p>Descargar en MP3</p></TooltipContent>
+          <TooltipContent side="left"><p>Descargar en MP3</p></TooltipContent>
         </Tooltip>
       </div>
       
@@ -305,16 +305,17 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="glass-effect p-2 opacity-80 hover:opacity-100 transition-all duration-300 shadow-lg hover-glow rounded-lg flex items-center gap-2 border-none">
-                <PlayCircle className={`h-4 w-4 text-player-timestamp ${isAutoplay ? '' : 'opacity-50'}`} />
-                <Switch id="autoplay-switch" checked={isAutoplay} onCheckedChange={setIsAutoplay} />
+              <div className="glass-effect p-2 opacity-80 hover:opacity-100 transition-all duration-300 shadow-lg hover-glow rounded-lg flex items-center border-none">
+                <Switch id="autoplay-switch" checked={isAutoplay} onCheckedChange={setIsAutoplay}>
+                  <PlayCircle className="h-5 w-5" />
+                </Switch>
               </div>
             </TooltipTrigger>
             <TooltipContent side="top"><p>Autoplay</p></TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleShuffle} className={`relative synthwave-button-secondary ${isShuffled ? 'play-button-active' : 'text-dimmed'}`}>
+              <Button variant="default" size="icon" onClick={toggleShuffle} className={`relative synthwave-button-gradient ${isShuffled ? 'play-button-active' : ''}`}>
                 <Shuffle className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
@@ -322,7 +323,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-secondary ${repeatMode !== 'none' ? 'play-button-active' : 'text-dimmed'}`}>
+              <Button variant="default" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-gradient ${repeatMode !== 'none' ? 'play-button-active' : ''}`}>
                 <Repeat className="h-4 w-4" />
                 {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
               </Button>
@@ -340,7 +341,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" onClick={toggleMute} className={`synthwave-button-secondary text-player-timestamp ${isMuted ? 'play-button-active' : ''}`}>
+              <Button variant="default" size="icon" onClick={toggleMute} className={`synthwave-button-gradient ${!isMuted ? 'play-button-active' : ''}`}>
                 {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
               </Button>
             </TooltipTrigger>

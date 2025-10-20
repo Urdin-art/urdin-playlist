@@ -259,7 +259,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
        <div className="absolute top-4 left-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="default" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button-gradient h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'play-button-active' : ''}`}>
+            <Button variant="unstyled" size="icon" onClick={() => togglePersonalPlaylist(currentSong.id)} className={`synthwave-button-gradient h-10 w-10 ${personalPlaylist.includes(currentSong.id) ? 'play-button-active' : ''}`}>
               <Star className={`h-5 w-5 ${personalPlaylist.includes(currentSong.id) ? 'fill-current' : ''}`} />
             </Button>
           </TooltipTrigger>
@@ -269,7 +269,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       <div className="absolute top-4 right-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="default" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button-gradient h-10 w-10">
+            <Button variant="unstyled" size="icon" onClick={() => downloadSong(currentSong.id)} className="synthwave-button-gradient h-10 w-10">
               <Download className="h-5 w-5" />
             </Button>
           </TooltipTrigger>
@@ -294,18 +294,18 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
       </div>
 
       <div className="flex items-center justify-center gap-4 mb-4">
-        <Button variant="ghost" size="icon" onClick={handlePrevious} className="synthwave-button-gradient"><SkipBack className="h-4 w-4" /></Button>
-        <Button variant="default" size="icon" onClick={togglePlay} className={`synthwave-button-gradient h-16 w-16 ${isPlaying ? 'play-button-active' : ''}`} disabled={isBuffering}>
+        <Button variant="unstyled" size="icon" onClick={handlePrevious} className="synthwave-button-gradient"><SkipBack className="h-4 w-4" /></Button>
+        <Button variant="unstyled" size="icon" onClick={togglePlay} className={`synthwave-button-gradient h-16 w-16 ${isPlaying ? 'play-button-active' : ''}`} disabled={isBuffering}>
           {isBuffering ? <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin"></div> : isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
         </Button>
-        <Button variant="ghost" size="icon" onClick={handleNext} className="synthwave-button-gradient"><SkipForward className="h-4 w-4" /></Button>
+        <Button variant="unstyled" size="icon" onClick={handleNext} className="synthwave-button-gradient"><SkipForward className="h-4 w-4" /></Button>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="glass-effect p-2 opacity-80 hover:opacity-100 transition-all duration-300 shadow-lg hover-glow rounded-lg flex items-center border-none">
+              <div className="glass-effect p-2 opacity-80 hover:opacity-100 transition-all duration-300 hover-glow rounded-lg flex items-center border-none shadow-none">
                 <Switch id="autoplay-switch" checked={isAutoplay} onCheckedChange={setIsAutoplay}>
                   <PlayCircle className="h-5 w-5" />
                 </Switch>
@@ -315,7 +315,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="default" size="icon" onClick={toggleShuffle} className={`relative synthwave-button-gradient ${isShuffled ? 'play-button-active' : ''}`}>
+              <Button variant="unstyled" size="icon" onClick={toggleShuffle} className={`relative synthwave-button-gradient ${isShuffled ? 'play-button-active' : ''}`}>
                 <Shuffle className="h-4 w-4" />
               </Button>
             </TooltipTrigger>
@@ -323,7 +323,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="default" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-gradient ${repeatMode !== 'none' ? 'play-button-active' : ''}`}>
+              <Button variant="unstyled" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-gradient ${repeatMode !== 'none' ? 'play-button-active' : ''}`}>
                 <Repeat className="h-4 w-4" />
                 {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
               </Button>
@@ -341,7 +341,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
         <div className="flex items-center gap-2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button variant="default" size="icon" onClick={toggleMute} className={`synthwave-button-gradient ${!isMuted ? 'play-button-active' : ''}`}>
+              <Button variant="unstyled" size="icon" onClick={toggleMute} className={`synthwave-button-gradient ${!isMuted ? 'play-button-active' : ''}`}>
                 {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
               </Button>
             </TooltipTrigger>

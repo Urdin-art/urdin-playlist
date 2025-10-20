@@ -1,9 +1,8 @@
 {
     "logo": "\/logo.png",
-    "tagline": "Cara S - TODO SOBRE NOCTILUCA",
-    "tagline_html": "",
-
-    "playlist": "\/songs-S.json",
+    "tagline": "Sincronicidades",
+    "tagline_html": "<\/br><big><b>\ud83d\udcbf NUEVO ALBUM EN PROCESO<\/b><\/big>",
+    "playlist": "\/songs-s.json",
     "storage": "retro-beat-player-side-s",
     "use_exclusions": true,
     "personal_list_button": {

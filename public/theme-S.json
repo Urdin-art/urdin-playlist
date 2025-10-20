@@ -1,163 +1,161 @@
 {
     "simple": {
-        "primary": "hsla(236, 100%, 50%, 1.00)",
-        "secondary": "hsla(316, 100%, 50%, 1.00)",
-        "accent": "hsla(157, 100%, 50%, 1.00)",
-        "cardBackground": "hsla(328, 100%, 35%, 1.00)",
-        "pageBackground": "hsla(241, 100%, 27%, 1.00)"
+        "primary": "hsla(200, 100%, 50%, 1.00)",
+        "secondary": "hsla(210, 50%, 60%, 1.00)",
+        "accent": "hsla(0, 0%, 100%, 1.00)",
+        "cardBackground": "hsla(220, 50%, 95%, 1.00)",
+        "pageBackground": "hsla(210, 50%, 80%, 1.00)"
     },
     "complete": {
-
         "buttons": {
             "inactive": {
                 "backgroundGradient": {
-                    "from": "hsla(237, 52%, 33%, 1.00)",
-                    "to": "hsla(316, 53%, 26%, 1.00)"
+                    "from": "hsla(200, 50%, 80%, 1.00)",
+                    "to": "hsla(210, 50%, 70%, 1.00)"
                 },
-                "borderColor": "hsla(331, 45%, 10%, 1.00)",
-                "iconColor": "hsla(0, 2%, 64%, 1.00)",
-                "glowColor": "hsla(319, 98%, 83%, 0.50)"
+                "borderColor": "hsla(210, 50%, 60%, 1.00)",
+                "iconColor": "hsla(210, 50%, 30%, 1.00)",
+                "glowColor": "hsla(200, 100%, 50%, 0.3)"
             },
             "hover": {
                 "backgroundGradient": {
-                    "from": "hsla(236, 100%, 50%, 1.00)",
-                    "to": "hsla(296, 100%, 50%, 1.00)"
+                    "from": "hsla(200, 100%, 70%, 1.00)",
+                    "to": "hsla(0, 0%, 100%, 1.00)"
                 },
-                "borderColor": "hsla(0, 0%, 0%, 1.00)",
-                "iconColor": "hsla(0, 0%, 100%, 1.00)",
-                "glowColor": "hsla(339, 100%, 72%, 0.80)"
+                "borderColor": "hsla(0, 0%, 100%, 1.00)",
+                "iconColor": "hsla(210, 50%, 20%, 1.00)",
+                "glowColor": "hsla(0, 0%, 100%, 0.7)"
             },
             "active": {
                 "backgroundGradient": {
-                    "from": "hsla(157, 100%, 50%, 1.00)",
-                    "to": "hsla(236, 100%, 45%, 1.00)"
+                    "from": "hsla(200, 100%, 50%, 1.00)",
+                    "to": "hsla(210, 100%, 60%, 1.00)"
                 },
                 "borderColor": "hsla(0, 0%, 100%, 1.00)",
-                "iconColor": "hsla(0, 0%, 0%, 1.00)",
-                "glowColor": "hsla(157, 100%, 85%, 0.90)"
+                "iconColor": "hsla(0, 0%, 100%, 1.00)",
+                "glowColor": "hsla(200, 100%, 50%, 0.8)"
             },
             "glowSize": "15px",
             "borderRadius": "1rem",
-            "borderWidth": "1px"
+            "borderWidth": "2px"
         },
         "backgrounds": {
             "page": {
-                "from": "hsla(241, 100%, 50%, 1.00)",
-                "to": "hsla(308, 100%, 50%, 1.00)",
+                "from": "hsla(210, 50%, 80%, 1.00)",
+                "to": "hsla(220, 50%, 90%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
             "albumArtCard": {
-                "from": "hsla(328, 100%, 16%, 1.00)",
-                "to": "hsla(258, 100%, 21%, 1.00)",
+                "from": "hsla(220, 50%, 98%, 1.00)",
+                "to": "hsla(210, 50%, 92%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
             "playerCard": {
-                "from": "hsla(328, 47%, 40%, 1.00)",
-                "to": "hsla(258, 33%, 44%, 1.00)",
+                "from": "hsla(220, 50%, 98%, 1.00)",
+                "to": "hsla(210, 50%, 92%, 1.00)",
                 "type": "linear",
-                "angle": 135
+                "angle": "135"
             },
             "playlistCard": {
-                "from": "hsla(264, 29%, 38%, 1.00)",
-                "to": "hsla(0, 42%, 44%, 1.00)",
+                "from": "hsla(220, 50%, 98%, 1.00)",
+                "to": "hsla(210, 50%, 92%, 1.00)",
                 "type": "linear",
                 "angle": 135
             },
             "exclusionsCard": {
-                "from": "hsla(0, 24%, 28%, 1.00)",
-                "to": "hsla(268, 27%, 20%, 1.00)",
+                "from": "hsla(220, 50%, 98%, 1.00)",
+                "to": "hsla(210, 50%, 92%, 1.00)",
                 "type": "linear",
                 "angle": 135
             }
         },
         "text": {
             "headerFooter": {
-                "normal": "hsla(311, 65%, 64%, 1.00)",
-                "highlighted": "hsla(211, 47%, 69%, 1.00)"
+                "normal": "hsla(210, 50%, 30%, 1.00)",
+                "highlighted": "hsla(200, 100%, 20%, 1.00)"
             },
             "player": {
-                "title": "hsla(237, 45%, 77%, 1.00)",
-                "artist": "hsla(315, 24%, 65%, 1.00)",
-                "album": "hsla(154, 13%, 65%, 1.00)",
-                "timestamp": "hsla(316, 19%, 58%, 1.00)"
+                "title": "hsla(210, 50%, 10%, 1.00)",
+                "artist": "hsla(200, 50%, 30%, 1.00)",
+                "album": "hsla(210, 30%, 40%, 1.00)",
+                "timestamp": "hsla(210, 50%, 30%, 1.00)"
             },
             "playlist": {
-                "title": "hsla(236, 23%, 63%, 1.00)",
-                "titleActive": "hsla(236, 97%, 75%, 1.00)",
-                "secondary": "hsla(315, 30%, 56%, 1.00)",
-                "icons": "hsla(187, 55%, 52%, 1.00)"
+                "title": "hsla(210, 50%, 10%, 1.00)",
+                "titleActive": "hsla(200, 100%, 50%, 1.00)",
+                "secondary": "hsla(210, 30%, 40%, 1.00)",
+                "icons": "hsla(200, 100%, 50%, 1.00)"
             }
         },
         "lyricsCard": {
-            "background": "hsla(316, 80%, 20%, 0.70)",
-            "scanlines": "hsla(316, 57%, 34%, 0.14)",
-            "textHighlighted": "hsla(316, 66%, 78%, 1.00)",
-            "textDimmed": "hsla(316, 90%, 28%, 1.00)",
-            "glowColor": "hsla(316, 96%, 82%, 0.77)",
-            "glowSize": "30px",
-            "borderColor": "hsla(316, 100%, 15%, 1.00)",
-            "borderWidth": "5px",
+            "background": "hsla(210, 50%, 95%, 0.8)",
+            "scanlines": "hsla(210, 50%, 80%, 0.3)",
+            "textHighlighted": "hsla(200, 100%, 20%, 1.00)",
+            "textDimmed": "hsla(210, 30%, 40%, 1.00)",
+            "glowColor": "hsla(200, 100%, 50%, 0.5)",
+            "glowSize": "40px",
+            "borderColor": "hsla(0, 0%, 100%, 1.00)",
+            "borderWidth": "2px",
             "borderRadius": "1rem"
         },
         "borders": {
-            "menu": {
-                "color": "hsla(0, 0%, 0%, 0.70)",
-                "width": "1px",
-                "radius": "0.5rem"
-            },
             "albumArtCard": {
-                "color": "hsla(236, 100%, 40%, 0.70)",
-                "width": "3px",
+                "color": "hsla(210, 50%, 70%, 1.00)",
+                "width": "2px",
                 "radius": "1rem"
             },
             "playerCard": {
-                "color": "hsla(316, 100%, 30%, 0.70)",
-                "width": "3px",
+                "color": "hsla(210, 50%, 70%, 1.00)",
+                "width": "2px",
                 "radius": "1rem"
             },
             "playlistCard": {
-                "color": "hsla(157, 100%, 21%, 0.70)",
-                "width": "3px",
+                "color": "hsla(210, 50%, 70%, 1.00)",
+                "width": "2px",
                 "radius": "1rem"
             },
             "playlistItem": {
-                "color": "hsla(236, 41%, 35%, 0.77)",
+                "color": "hsla(210, 50%, 80%, 1.00)",
                 "width": "1px",
                 "radius": "0.5rem"
             },
             "exclusionsCard": {
-                "color": "hsla(236, 44%, 23%, 1.00)",
-                "width": "3px",
+                "color": "hsla(210, 50%, 70%, 1.00)",
+                "width": "2px",
                 "radius": "1rem"
             }
         },
         "glows": {
             "albumArtCard": {
-                "color": "hsla(176, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(200, 100%, 50%, 0.5)",
+                "size": "40px"
             },
             "playerCard": {
-                "color": "hsla(315, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(210, 50%, 60%, 0.5)",
+                "size": "40px"
             },
             "playlistCard": {
-                "color": "hsla(124, 100%, 50%, 1.00)",
-                "size": "25px"
+                "color": "hsla(0, 0%, 100%, 0.8)",
+                "size": "40px"
             },
             "playlistItem": {
-                "color": "hsla(206, 84%, 76%, 1.00)",
-                "size": "10px"
+                "color": "hsla(200, 100%, 50%, 0.5)",
+                "size": "15px"
             },
             "exclusionsCard": {
-                "color": "hsla(236, 97%, 23%, 1.00)",
-                "size": "25px"
+                "color": "hsla(210, 50%, 60%, 0.5)",
+                "size": "40px"
             }
         },
         "menu": {
-            "textColor": "hsla(0, 0%, 50%, 1.00)",
-            "buttonGradientColor": "hsla(0, 0%, 100%, 1.00)"
+            "textColor": "hsla(210, 50%, 20%, 1.00)",
+            "buttonGradientColor": "hsla(200, 100%, 50%, 0.8)",
+            "gradientBottomColor": "hsla(210, 50%, 70%, 0.8)",
+            "borderColor": "hsla(210, 50%, 60%, 1.00)",
+            "borderWidth": "1px",
+            "borderRadius": "0.5rem"
         }
     }
 }

@@ -2,11 +2,11 @@
   "playlists": [
     {
       "title": "Cara B",
-      "config": "B-side"
+      "config": "B"
     },
     {
       "title": "Sincronicidades",
-      "config": "S-side"
+      "config": "S"
     }
   ]
 }

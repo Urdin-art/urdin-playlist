@@ -109,6 +109,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
         {config?.personal_list_button?.enabled && isActive && (
           <Button
             id="my-list-button"
+            variant="unstyled"
             className="synthwave-button"
             onClick={() => switchConfig(config.personal_list_button.targetConfig || 'my-side')}
           >
@@ -118,6 +119,7 @@ export const Playlist: React.FC<PlaylistProps> = ({
         )}
         {config?.refresh_button?.enabled && isActive && (
           <Button
+            variant="unstyled"
             className="synthwave-button"
             onClick={() => window.location.reload()}
           >

@@ -1,23 +1,19 @@
 import React from 'react';
 import { useImageLoader } from './ImageLoader';
-import { useAppConfig } from '@/hooks/useAppConfig';
 
 interface LogoLoaderProps {
   className?: string;
   alt?: string;
+  logoPath: string;
 }
 
 export const LogoLoader: React.FC<LogoLoaderProps> = ({
   className = "",
   alt,
+  logoPath,
 }) => {
-  const { config } = useAppConfig();
+  const logoAlt = alt || logoPath.split('/').pop()?.split('.')[0] || "Logo";
   
-  // Usar el logo de la configuración o el logo por defecto
-  const logoPath = config?.logo || '/logo';
-  const logoAlt = alt || config?.logo?.split('/').pop()?.split('.')[0] || "Logo";
-  
-  // Eliminar extensión si existe para que useImageLoader pueda añadir la suya
   const removeExtension = (path: string): string => {
     const lastDotIndex = path.lastIndexOf('.');
     return lastDotIndex !== -1 ? path.substring(0, lastDotIndex) : path;

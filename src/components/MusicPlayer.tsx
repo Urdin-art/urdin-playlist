@@ -325,7 +325,7 @@ export const MusicPlayer = forwardRef<{ togglePlay: () => void }, MusicPlayerPro
             <TooltipTrigger asChild>
               <Button variant="unstyled" size="icon" onClick={toggleRepeat} className={`relative synthwave-button-gradient ${repeatMode !== 'none' ? 'play-button-active' : ''}`}>
                 <Repeat className="h-4 w-4" />
-                {repeatMode === 'one' && <span className="text-xs absolute -top-1 -right-1">1</span>}
+                {repeatMode === 'one' && <span className="font-bold absolute top-0 right-0 text-xs">1</span>}
               </Button>
             </TooltipTrigger>
             <TooltipContent side="top">

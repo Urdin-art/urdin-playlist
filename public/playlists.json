@@ -1,12 +1,16 @@
 {
-  "playlists": [
-    {
-      "title": "Cara B",
-      "config": "B"
-    },
-    {
-      "title": "Sincronicidades",
-      "config": "S"
-    }
-  ]
+    "playlists": [
+        {
+            "title": "Cara B",
+            "config": "B"
+        },
+        {
+            "title": "Sincronicidades",
+            "config": "S"
+        },
+        {
+            "title": "Siete Almas \ud83e\udd8b",
+            "config": "7A"
+        }
+    ]
 }

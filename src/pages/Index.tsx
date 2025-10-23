@@ -215,8 +215,9 @@ const Index = () => {
             🎵
           </h1>
            <LogoLoader 
+            logoPath={config?.logo || '/logo'}
             alt="UrDíN.art Logo"
-            className="w-auto h-auto"
+            className="w-auto h-auto mb-4"
           />
           <h1 className="text-4xl gradient-text-primary">
             🎵

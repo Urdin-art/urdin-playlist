@@ -8,6 +8,7 @@ import { LogoLoader } from '@/components/LogoLoader';
 import { ConfigEditor } from '@/components/admin/ConfigEditor';
 import { ThemeEditor } from '@/components/admin/ThemeEditor';
 import { OrphanFileManager } from '@/components/admin/OrphanFileManager';
+import { PlaylistModalManager } from '@/components/admin/PlaylistModalManager';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function AdminPage() {
@@ -191,7 +192,7 @@ function AdminPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--simple-page-background)' }}>
       <header className="text-center py-8">
-        {config?.logo && <LogoLoader alt="Logo" className="w-auto h-auto mx-auto" />}
+        {config?.logo && <LogoLoader logoPath={config.logo} alt="Logo" className="w-auto h-auto mx-auto mb-4" />}
         {config?.tagline && <p style={{ color: 'var(--simple-primary)' }} className="mt-4">{config.tagline}</p>}
         {config?.tagline_html && <p style={{ color: 'var(--simple-primary)' }} className="mt-2" dangerouslySetInnerHTML={{ __html: config.tagline_html }} />}
       </header>
@@ -284,6 +285,7 @@ function AdminPage() {
                   handleCreatePlaylist={handleCreatePlaylist}
                   handleDeletePlaylist={handleDeletePlaylist}
                 />
+                <PlaylistModalManager configs={configs} />
               </CardContent>
             </Card>
           </TabsContent>
